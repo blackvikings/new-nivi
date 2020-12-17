@@ -52,7 +52,7 @@
             <ul>
                 <li class="active"><a href="index.html">Home</a></li>
 
-{{--                @auth('members')--}}
+            @auth('members')
                 <li class="drop-down"><a href="">Member</a>
                     <ul>
                         <li><a href="{{ route('member.addMember') }}">Add Member</a></li>
@@ -61,7 +61,7 @@
                         <li><a href="#">View Members</a></li>
                     </ul>
                 </li>
-{{--                @endauth--}}
+            @endauth
                 <li class="drop-down"><a href="">About</a>
                     <ul>
                         <li><a href="about.html">About Us</a></li>

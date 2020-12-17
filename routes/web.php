@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Member\Members\MembersController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,10 +31,10 @@ Route::group(['prefix' => 'member', 'namespace' => 'App\Http\Controllers\Member\
 
 });
 
-Route::group(['middleware' => 'auth:members' , 'namespace' => 'App\http\Controllers\Member\Members', 'as' => 'member.'], function () {
-    Route::get('/add-member', 'MembersController@index')->name('addMember');
-    Route::post('/add-member', 'MembersController@store')->name('addMember.store');
+Route::group(['middleware' => 'auth:members' , 'as' => 'member.'], function () {
+    Route::get('/add-member', [MembersController::class, 'index'])->name('addMember');
+    Route::post('/add-member', [MembersController::class, 'store'])->name('addMember.store');
 });
 
-Route::get('/view-member', 'App\Http\Controllers\Member\Members\MembersController@viewMember')->name('view.member');
-Route::get('/direct-member', 'App\Http\Controllers\Member\Members\MembersController@directMember')->name('direct.member');
+Route::get('/view-member', [MembersController::class, 'viewMember'])->name('view.member');
+Route::get('/direct-member', [MembersController::class, 'directMember'])->name('direct.member');
