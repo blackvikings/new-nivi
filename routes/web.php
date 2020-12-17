@@ -34,3 +34,6 @@ Route::group(['middleware' => 'auth:members' , 'namespace' => 'App\http\Controll
     Route::get('/add-member', 'MembersController@index')->name('addMember');
     Route::post('/add-member', 'MembersController@store')->name('addMember.store');
 });
+
+Route::get('/view-member', 'App\Http\Controllers\Member\Members\MembersController@viewMember')->name('view.member');
+Route::get('/direct-member', 'App\Http\Controllers\Member\Members\MembersController@directMember')->name('direct.member');

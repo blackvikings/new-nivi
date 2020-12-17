@@ -63,4 +63,15 @@ class MembersController extends Controller
         }
 
     }
+
+
+    public function viewMember()
+    {
+        return view('members.view-member');
+    } 
+
+    public function directMember()
+    {
+        return view('members.direct-member');
+    }
 }
