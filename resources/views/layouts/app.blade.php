@@ -28,8 +28,9 @@
 
     <!-- Template Main CSS File -->
     <link href="{{ asset('public/assets/css/style.css') }}" rel="stylesheet">
+    @stack("css")
+
     @toastr_css
-    @yield('css')
     @if(Request::is('member/register'))
         <style>
             h5 { width:100%; text-align:center; border-bottom: 1px solid #000; line-height:0.1em; margin:10px 0 20px; }
@@ -43,7 +44,7 @@
 <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-        <h1 class="logo mr-auto"><a href="index.html"><img src="{{ asset('public/assets/ourImages/logo-2.png') }}" class="img-fluid" alt="Logo" style="padding-left: 32px;"><br><span style="font-size: 13px;">Nivi Health Care </span></a></h1>
+        <h1 class="logo mr-auto"><a href="index.html"><img src="{{ asset('public/assets/ourImages/logo-2.png') }}" class="img-fluid" alt="Logo" style="padding-left: 32px;"></a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
@@ -217,10 +218,11 @@
 
 <!-- Template Main JS File -->
 <script src="{{ asset('public/assets/js/main.js') }}"></script>
+@stack("js")
+
 @jquery
 @toastr_js
 @toastr_render
-@yield('scripts')
 </body>
 
 </html>
