@@ -5,11 +5,21 @@
         <!-- ======= Register Section ======= -->
         <section id="contact" class="contact">
             <div class="container">
-
+    
                 <div class="row mt-2 justify-content-center" data-aos="fade-up">
                     <div class="col-lg-10">
                         <form action="{{ route('member.register.update') }}" method="post" enctype="multipart/form-data" class="php-email-form">
                         @csrf
+                        
+                        @if(Session::has('user_id') && Session::has('password'))
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p>Kindily Note User ID and Password : </p>
+                                    <p>{{ Session::get('user_id') }}</p>
+                                    <p>{{ Session::get('password') }}</p>
+                                </div>
+                            </div>
+                        @endif
                         <!-- user-ID, name, and father -->
                             <div class="form-row">
                                 <div class="col-md-4 form-group">

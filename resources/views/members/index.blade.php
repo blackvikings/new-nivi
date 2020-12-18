@@ -10,6 +10,13 @@
                         <form action="{{ route('member.addMember.store') }}" method="post" role="form" class="php-email-form">
                             @csrf
                             <!-- member name and phone, dob  -->
+                            @if(Session::has('user_id'))
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <p>{{ Session::get('user_id') }}</p>
+                                </div>
+                            </div>
+                            @endif
                             <div class="form-row">
                                 <div class="col-md-4 form-group @error('name') has-error @enderror ">
                                     <input type="text" id="name" name="name" class="form-control @error('name') is-invalid @enderror " value="{{ old('name') }}" required placeholder="Enter Name">

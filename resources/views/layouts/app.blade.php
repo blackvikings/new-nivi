@@ -84,29 +84,29 @@
                 <li><a href="pricing.html">Pricing</a></li>
                 <li><a href="blog.html">Blog</a></li>
                 <li><a href="contact.html">Contact</a></li>
+                
+                @guest('members')
+                <li><a href="{{ route('login') }}" >Sign in</a></li>
+                <li><a href="{{ route('register') }}" >Sign up</a></li>
 
-            </ul>
-        </nav><!-- .nav-menu -->
-        @guest('members')
-            <div class="header-social-links">
-                <button type="button" class="btn btn-secondary btn-sm"><a href="{{ route('login') }}" style="color: white; font-size: 13px;">Sign in</a></button>
-                <button type="button" class="btn btn-secondary btn-sm"><a href="{{ route('register') }}" style="color: white; font-size: 13px;">Sign up</a></button>
-            </div>
-        @else
-            <nav class="nav-menu d-none d-lg-block">
-                <ul>
-                    <li class="drop-down"><a href="#" class="btn btn-success">{{ Auth::guard('members')->user()->name }}</a>
-                        <ul>
-                            <li><a href="#">My Profile</a></li>
-                            <li><a href="javascript:void(0);" onclick="$('#logout-form').submit();">Logout</a></li>
-                            <form id="logout-form" action="{{ route('member.logout') }}" method="POST" style="display: none;">
+
+                @else
+                <li class="drop-down"><a href="#" style="color:green;">{{ Auth::guard('members')->user()->name }}</a>
+                    <ul>
+                        <li><a href="#">My Profile</a></li>
+                        <li><a href="javascript:void(0);" onclick="$('#logout-form').submit();">Logout</a></li>
+                        <form id="logout-form" action="{{ route('member.logout') }}" method="POST" style="display: none;">-->
                                 @csrf
-                            </form>
-                        </ul>
-                    </li>
-                </ul>
-            </nav><!-- .nav-menu -->
-        @endguest
+                        </form>
+                    </ul>
+                </li>
+                 @endguest
+                
+            </ul>
+            
+            
+        </nav><!-- .nav-menu -->
+            
     </div>
 </header><!-- End Header -->
 

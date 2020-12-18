@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Member;
 use Redirect;
+use Session;
 
 class MembersController extends Controller
 {
@@ -44,15 +45,17 @@ class MembersController extends Controller
             $member->left_or_right = $request->left_or_right;
             $member->save();
 
-            $details = [
-                    'title' => 'Mail from Nevi Helth Care',
-                    'body' => 'This is for testing email using smtp',
-                    'member_id' => $member->user_id,
-                    // 'password' => $password,
-                ];
+            // $details = [
+            //         'title' => 'Mail from Nevi Helth Care',
+            //         'body' => 'This is for testing email using smtp',
+            //         'member_id' => $member->user_id,
+            //         // 'password' => $password,
+            //     ];
 
-                \Mail::to($member->email)->send(new \App\Mail\UserCredentials($details));
+            //     \Mail::to($member->email)->send(new \App\Mail\UserCredentials($details));
 
+            Session::put('user_id', $member->user_id);
+            
             toastr()->success('Member Added');
             return Redirect::route('member.addMember');
         }

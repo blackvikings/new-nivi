@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Member\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Member;
+use Session;
 class RegisterController extends Controller
 {
 
@@ -78,14 +79,17 @@ class RegisterController extends Controller
             $member->password = bcrypt($password);
             $member->save();
 
-            $details = [
-                'title' => 'Mail from Nevi Helth Care',
-                'body' => 'This is for testing email using smtp',
-                'member_id' => $member->user_id,
-                'password' => $password,
-            ];
+            // $details = [
+            //     'title' => 'Mail from Nevi Helth Care',
+            //     'body' => 'This is for testing email using smtp',
+            //     'member_id' => $member->user_id,
+            //     'password' => $password,
+            // ];
+            
+            Session::put('user_id', $member->user_id);
+            Session::put('password', $password);
 
-            \Mail::to($member->email)->send(new \App\Mail\UserCredentials($details));
+            // \Mail::to($member->email)->send(new \App\Mail\UserCredentials($details));
 
             toastr()->success('Member registration successfully completed!!');
             return redirect()->back();
