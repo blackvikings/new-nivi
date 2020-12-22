@@ -20,6 +20,7 @@
             'format' => config('backpack.base.default_date_format'),
             'applyLabel'=> trans('backpack::crud.apply'),
             'cancelLabel'=> trans('backpack::crud.cancel'),
+            'customRangeLabel' => trans('backpack::crud.custom_range')
         ],
 
 
@@ -67,7 +68,7 @@
 
 @push('crud_list_styles')
     <!-- include select2 css-->
-	<link rel="stylesheet" type="text/css" href="{{ asset('public/packages/bootstrap-daterangepicker/daterangepicker.css') }}" />
+	<link rel="stylesheet" type="text/css" href="{{ asset('packages/bootstrap-daterangepicker/daterangepicker.css') }}" />
 	<style>
 		.input-group.date {
 			width: 320px;
@@ -83,8 +84,8 @@
 {{-- push things in the after_scripts section --}}
 
 @push('crud_list_scripts')
-    <script type="text/javascript" src="{{ asset('public/packages/moment/min/moment-with-locales.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('public/packages/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('packages/moment/min/moment-with-locales.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('packages/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
 
   <script>
 

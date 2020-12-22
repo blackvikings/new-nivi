@@ -72,7 +72,7 @@
 
     {{-- FIELD JS - will be loaded in the after_scripts section --}}
     @push('crud_fields_scripts')
-    <script src="{{ asset('public/packages/places.js/dist/cdn/places.min.js') }}"></script>
+    <script src="{{ asset('packages/places.js/dist/cdn/places.min.js') }}"></script>
     <script>
             window.AlgoliaPlaces = window.AlgoliaPlaces || {};
 

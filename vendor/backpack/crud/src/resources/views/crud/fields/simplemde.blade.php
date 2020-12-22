@@ -27,7 +27,7 @@
 
     {{-- FIELD CSS - will be loaded in the after_styles section --}}
     @push('crud_fields_styles')
-        <link rel="stylesheet" href="{{ asset('public/packages/simplemde/dist/simplemde.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('packages/simplemde/dist/simplemde.min.css') }}">
         <style type="text/css">
         .CodeMirror-fullscreen, .editor-toolbar.fullscreen {
             z-index: 9999 !important;
@@ -40,7 +40,7 @@
 
     {{-- FIELD JS - will be loaded in the after_scripts section --}}
     @push('crud_fields_scripts')
-        <script src="{{ asset('public/packages/simplemde/dist/simplemde.min.js') }}"></script>
+        <script src="{{ asset('packages/simplemde/dist/simplemde.min.js') }}"></script>
         <script>
             function bpFieldInitSimpleMdeElement(element) {
                 if (element.attr('data-initialized') == 'true') {

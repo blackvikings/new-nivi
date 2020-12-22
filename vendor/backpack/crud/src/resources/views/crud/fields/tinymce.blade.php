@@ -40,7 +40,7 @@ $field['options'] = array_merge($defaultOptions, $field['options'] ?? []);
     {{-- FIELD JS - will be loaded in the after_scripts section --}}
     @push('crud_fields_scripts')
     <!-- include tinymce js-->
-    <script src="{{ asset('public/packages/tinymce/tinymce.min.js') }}"></script>
+    <script src="{{ asset('packages/tinymce/tinymce.min.js') }}"></script>
 
     <script type="text/javascript">
     function bpFieldInitTinyMceElement(element) {

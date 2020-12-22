@@ -97,7 +97,7 @@
 
 {{-- FIELD JS - will be loaded in the after_scripts section --}}
 @push('crud_fields_scripts')
-<script src="{{ asset('public/packages/jquery-ui-dist/jquery-ui.min.js') }}"></script>
+<script src="{{ asset('packages/jquery-ui-dist/jquery-ui.min.js') }}"></script>
 <script>
     function bpFieldInitSelectAndOrderElement(element) {
         var $dragSource = element.find('[data-identifier=drag-source]');
