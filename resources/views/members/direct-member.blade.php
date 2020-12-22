@@ -20,15 +20,24 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td>@mdo</td>
-          <td>@mdo</td>
-          <td>@mdo</td>
-        </tr>
+          @forelse($members as $member)
+            <tr>
+              <th scope="row">1</th>
+              <td>{{ $member->name }}</td>
+              <td>{{ $member->user_id }}</td>
+              @php
+                    $member_address = json_decode($member->address);
+              @endphp
+              <td>{{ $member_address->address }} {{ $member_address->area }} {{ $member_address->house_no }} {{ $member_address->state }} {{ $member_address->district }}</td>
+              <td>{{ date('d-m-Y', strtotime($member->created_at)) }}</td>
+              <td>{{ $member->sponser_id }}</td>
+              <td>{{ $member->sub_sponser_id }}</td>
+            </tr>
+            @empty
+            <tr>
+                <td>Data not found</td>
+            </tr>
+            @endforelse
       </tbody>
     </table>
 </div>

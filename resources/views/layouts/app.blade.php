@@ -56,8 +56,8 @@
                 <li class="drop-down"><a href="">Member</a>
                     <ul>
                         <li><a href="{{ route('member.addMember') }}">Add Member</a></li>
-                        <li><a href="#">Direct Sponsor</a></li>
-                        <li><a href="#">Binary Tree</a></li>
+                        <li><a href="{{ route('member.direct') }}">Direct Sponsor</a></li>
+                        <li><a href="{{ route('member.view') }}">Binary Tree</a></li>
                         <li><a href="#">View Members</a></li>
                     </ul>
                 </li>

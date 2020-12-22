@@ -34,7 +34,8 @@ Route::group(['prefix' => 'member', 'namespace' => 'App\Http\Controllers\Member\
 Route::group(['middleware' => 'auth:members' , 'as' => 'member.'], function () {
     Route::get('/add-member', [MembersController::class, 'index'])->name('addMember');
     Route::post('/add-member', [MembersController::class, 'store'])->name('addMember.store');
+    Route::get('/direct-member', [MembersController::class, 'directMember'])->name('direct');
+    Route::get('/view-member', [MembersController::class, 'viewMember'])->name('view');
 });
 
-Route::get('/view-member', [MembersController::class, 'viewMember'])->name('view.member');
-Route::get('/direct-member', [MembersController::class, 'directMember'])->name('direct.member');
+

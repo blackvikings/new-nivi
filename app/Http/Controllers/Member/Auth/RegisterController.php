@@ -33,6 +33,10 @@ class RegisterController extends Controller
 //
 //        ]);
 
+                    
+            Session::flash('user_id');
+            Session::flash('password');
+
         $member = Member::where('user_id', $request->member_id)->first();
         if ($member != null) {
             $member->father_name = $request->father_name;
