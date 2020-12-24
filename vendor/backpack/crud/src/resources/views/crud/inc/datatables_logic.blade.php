@@ -1,10 +1,10 @@
   <!-- DATA TABLES SCRIPT -->
-  <script type="text/javascript" src="{{ asset('packages/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-  <script type="text/javascript" src="{{ asset('packages/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-  <script type="text/javascript" src="{{ asset('packages/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
-  <script type="text/javascript" src="{{ asset('packages/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
-  <script type="text/javascript" src="{{ asset('packages/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js') }}"></script>
-  <script type="text/javascript" src="{{ asset('packages/datatables.net-fixedheader-bs4/js/fixedHeader.bootstrap4.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('public/packages/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('public/packages/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('public/packages/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('public/packages/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('public/packages/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('public/packages/datatables.net-fixedheader-bs4/js/fixedHeader.bootstrap4.min.js') }}"></script>
 
   <script>
     @if ($crud->getPersistentTable())
@@ -178,7 +178,7 @@
               "thousands":      "{{ trans('backpack::crud.thousands') }}",
               "lengthMenu":     "{{ trans('backpack::crud.lengthMenu') }}",
               "loadingRecords": "{{ trans('backpack::crud.loadingRecords') }}",
-              "processing":     "<img src='{{ asset('packages/backpack/crud/img/ajax-loader.gif') }}' alt='{{ trans('backpack::crud.processing') }}'>",
+              "processing":     "<img src='{{ asset('public/packages/backpack/crud/img/ajax-loader.gif') }}' alt='{{ trans('backpack::crud.processing') }}'>",
               "search": "_INPUT_",
               "searchPlaceholder": "{{ trans('backpack::crud.search') }}...",
               "zeroRecords":    "{{ trans('backpack::crud.zeroRecords') }}",

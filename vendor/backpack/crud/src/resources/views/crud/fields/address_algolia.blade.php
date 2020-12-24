@@ -21,9 +21,9 @@
     @include('crud::fields.inc.translatable_icon')
 
     @if($field['store_as_json'])
-    <input type="hidden" 
-        value='{{ $field['value'] }}' 
-        name="{{ $field['name'] }}" 
+    <input type="hidden"
+        value='{{ $field['value'] }}'
+        name="{{ $field['name'] }}"
         data-algolia-hidden-input="{{ $field['name'] }}">
     @endif
 
@@ -72,7 +72,7 @@
 
     {{-- FIELD JS - will be loaded in the after_scripts section --}}
     @push('crud_fields_scripts')
-    <script src="{{ asset('packages/places.js/dist/cdn/places.min.js') }}"></script>
+    <script src="{{ asset('public/packages/places.js/dist/cdn/places.min.js') }}"></script>
     <script>
             window.AlgoliaPlaces = window.AlgoliaPlaces || {};
 

@@ -38,8 +38,8 @@
 
     {{-- FIELD JS - will be loaded in the after_scripts section --}}
     @push('crud_fields_scripts')
-        <script src="{{ asset('packages/ckeditor/ckeditor.js') }}"></script>
-        <script src="{{ asset('packages/ckeditor/adapters/jquery.js') }}"></script>
+        <script src="{{ asset('public/packages/ckeditor/ckeditor.js') }}"></script>
+        <script src="{{ asset('public/packages/ckeditor/adapters/jquery.js') }}"></script>
         <script>
             function bpFieldInitCKEditorElement(element) {
 

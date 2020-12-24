@@ -40,7 +40,7 @@
 
     {{-- FIELD JS - will be loaded in the after_scripts section --}}
     @push('crud_fields_scripts')
-        <script src="{{ asset('packages/simplemde/dist/simplemde.min.js') }}"></script>
+        <script src="{{ asset('public/packages/simplemde/dist/simplemde.min.js') }}"></script>
         <script>
             function bpFieldInitSimpleMdeElement(element) {
                 if (element.attr('data-initialized') == 'true') {

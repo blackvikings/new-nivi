@@ -77,8 +77,8 @@ if($sortable){
     @endphp
 
     {{-- FIELD CSS - will be loaded in the after_styles section --}}
-    @push('crud_fields_styles')        
-        <link href="{{ asset('packages/jquery-colorbox/example2/colorbox.css') }}" rel="stylesheet" type="text/css" />
+    @push('crud_fields_styles')
+        <link href="{{ asset('public/packages/jquery-colorbox/example2/colorbox.css') }}" rel="stylesheet" type="text/css" />
         <style>
             #cboxContent, #cboxLoadedContent, .cboxIframe {
                 background: transparent;
@@ -87,9 +87,9 @@ if($sortable){
     @endpush
 
     @push('crud_fields_scripts')
-        
-        <script src="{{ asset('packages/jquery-ui-dist/jquery-ui.min.js') }}"></script>
-        <script src="{{ asset('packages/jquery-colorbox/jquery.colorbox-min.js') }}"></script>
+
+        <script src="{{ asset('public/packages/jquery-ui-dist/jquery-ui.min.js') }}"></script>
+        <script src="{{ asset('public/packages/jquery-colorbox/jquery.colorbox-min.js') }}"></script>
         <script>
             // this global variable is used to remember what input to update with the file path
             // because elfinder is actually loaded in an iframe by colorbox
@@ -97,7 +97,7 @@ if($sortable){
 
             // function to use the files selected inside elfinder
             function processSelectedMultipleFiles(files, requestingField) {
-                elfinderTarget.trigger('createInputsForItemsSelectedWithElfinder', [files]);                
+                elfinderTarget.trigger('createInputsForItemsSelectedWithElfinder', [files]);
                 elfinderTarget = false;
             }
 
@@ -109,7 +109,7 @@ if($sortable){
                 var $multiple = element.attr('data-multiple');
                 var $sortable = element.attr('sortable');
 
-                // show existing items - display visible inputs for each stored path  
+                // show existing items - display visible inputs for each stored path
                 if ($input.val() != '' && $input.val() != null && $multiple === 'true') {
                     $paths = JSON.parse($input.val());
                     if (Array.isArray($paths) && $paths.length) {
