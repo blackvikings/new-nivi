@@ -40,12 +40,31 @@ class MemberCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        $this->crud->setColumns(['user_id', 'name', 'phone_no', 'dob']);
-        /**
-         * Columns can be defined using the fluent syntax or array syntax:
-         * - CRUD::column('price')->type('number');
-         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']);
-         */
+//        $this->crud->setColumns(['user_id', 'name', 'phone_no', 'dob']);
+
+        $this->crud->addColumn([
+            'label' => 'Name',
+            'name' => 'name',
+            'type' => 'text',
+        ]);
+
+        $this->crud->addColumn([
+           'label' => 'User ID',
+           'name' => 'user_id',
+           'type' => 'text'
+        ]);
+
+        $this->crud->addColumn([
+            'label' => 'Mobile No.',
+            'name' => 'phone_no',
+            'type' => 'text'
+        ]);
+
+        $this->crud->addColumn([
+            'label' => 'Date of birth',
+            'name' => 'dob',
+            'type' => 'date'
+        ]);
     }
 
     /**
