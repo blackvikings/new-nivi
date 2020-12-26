@@ -19,9 +19,9 @@ class MembersController extends Controller
 
     public function store(Request $request)
     {
-        
+
         Session::flash('user_id');
-        
+
         // dd($request->all());
         $request->validate([
             'name' => 'required',
@@ -36,7 +36,7 @@ class MembersController extends Controller
         //output: INV-000001
 
         $member_count = Member::where('sponser_id', $request->sponser_id)->where('sub_sponser_id', $request->sub_sponser_id)->count();
-        if ($member_count != 3 && $request->sub_sponser_id = $request->sponser_id) 
+        if ($member_count != 3 && $request->sub_sponser_id = $request->sponser_id)
         {
             $member = new Member;
             $member->user_id = 'NIVI-'.rand(1000000000,9999999999);
@@ -59,7 +59,7 @@ class MembersController extends Controller
             //     \Mail::to($member->email)->send(new \App\Mail\UserCredentials($details));
 
             Session::put('user_id', $member->user_id);
-            
+
             toastr()->success('Member Added');
             return Redirect::route('member.addMember');
         }
@@ -74,14 +74,15 @@ class MembersController extends Controller
 
     public function viewMember()
     {
-        
         return view('members.view-member');
-    } 
+    }
+
+
 
     public function directMember()
     {
         $id= Auth::guard('members')->user()->user_id;
-        $members = Member::where('user_id', '!=', $id)->where('sponser_id', $id)->get(); 
+        $members = Member::where('user_id', '!=', $id)->where('sponser_id', $id)->get();
         // dd($members->toArray());
         return view('members.direct-member', compact('members'));
     }
