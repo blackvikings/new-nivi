@@ -50,25 +50,24 @@
 
         <nav class="nav-menu d-none d-lg-block">
             <ul>
-                <li class="active"><a href="{{ route('home') }}">Home</a></li>
-                 <li class=""><a href="#">About Us</a></li>
-                 <li class=""><a href="#">Service</a></li>
-
+                <li class="{{ request()->is('/') ? 'active' : '' }}"><a href="{{ route('home') }}">Home</a></li>
+                 <li class="{{ request()->is('about') ? 'active' : '' }} "><a href="{{ route('about') }}">About Us</a></li>
+                 <li class="{{ request()->is('service') ? 'active' : '' }}"><a href="{{ route('service') }}">Service</a></li>
             @auth('members')
-                <li class="drop-down"><a href="">Member</a>
+                <li class="drop-down {{ request()->is('add-member') || request()->is('direct-member') || request()->is('view-member') ? 'active' : '' }}"><a href="">Member</a>
                     <ul>
-                        <li><a href="{{ route('member.addMember') }}">Add Member</a></li>
-                        <li><a href="{{ route('member.direct') }}">Direct Sponsor</a></li>
+                        <li class="{{ request()->is('add-member') ? 'active' : '' }}"><a href="{{ route('member.addMember') }}">Add Member</a></li>
+                        <li class="{{ request()->is('direct-member') ? 'active' : '' }}"><a href="{{ route('member.direct') }}">Direct Sponsor</a></li>
                         <li><a href="#">Binary Tree</a></li>
-                        <li><a href="{{ route('member.view') }}">View Members</a></li>
+                        <li class="{{ request()->is('view-member') ? 'active' : '' }}"><a href="{{ route('member.view') }}">View Members</a></li>
                     </ul>
                 </li>
             @endauth
-                <li><a href="contact.html">Contact</a></li>
+                <li class="{{ request()->is('contact') ? 'active' : '' }}"><a href="{{ route('contact') }}">Contact</a></li>
 
                 @guest('members')
-                <li><a href="{{ route('login') }}" >Sign in</a></li>
-                <li><a href="{{ route('register') }}" >Sign up</a></li>
+                <li class="{{ request()->is('login') ? 'active' : '' }}"><a href="{{ route('login') }}" >Sign in</a></li>
+                <li class="{{ request()->is('register') ? 'active' : '' }}"><a href="{{ route('register') }}" >Sign up</a></li>
 
 
                 @else

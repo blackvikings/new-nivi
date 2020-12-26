@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Member\Members\MembersController;
+use App\Http\Controllers\FrontendController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,9 +15,11 @@ use App\Http\Controllers\Member\Members\MembersController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/', [FrontendController::class, 'index'])->name('home');
+Route::get('/contact', [FrontendController::class, 'contact'])->name('contact');
+Route::get('/about', [FrontendController::class, 'about'])->name('about');
+Route::get('/service', [FrontendController::class, 'service'])->name('service');
+
 
 
 Route::get('/register', 'App\Http\Controllers\Member\Auth\RegisterController@index')->name('register');

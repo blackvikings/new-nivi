@@ -8,7 +8,7 @@
             <div class="carousel-inner" role="listbox">
 
                 <!-- Slide 1 -->
-                <div class="carousel-item active" style="background-image: url({{ asset('./public/assets/ourImages/2.jpeg') }});">
+                <div class="carousel-item active" style="background-image: url({{ asset('./public/assets/ourImages/LOGO.jpg') }});">
                    {{--  <div class="carousel-container">
                         <div class="carousel-content animate__animated animate__fadeInUp">
                             <h2>Welcome to <span>Company</span></h2>
