@@ -64,7 +64,7 @@
             <div class="container" data-aos="fade-up">
 
                 <div class="section-title">
-                    <h2>About Us</strong></h2>
+                    <h2><strong>About Us</strong></h2>
                 </div>
 
                 <div class="row content">

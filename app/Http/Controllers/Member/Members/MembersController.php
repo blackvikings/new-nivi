@@ -72,8 +72,16 @@ class MembersController extends Controller
     }
 
 
-    public function viewMember()
+    public function viewMember(Request $request)
     {
+        if($request->isMethod('post'))
+        {
+            $formdate = date('Y-m-d H:i:s', strtotime($request->fromdate));
+            $todate = date('Y-m-d H:i:s', strtotime($request->todate));
+            $members = Member::where('id', '!=', Auth::guard('members')->user()->id)->whereBetween('created_at', [$formdate, $todate])->get();
+//                dd($members->toArray());
+            return view('members.view-member', compact('members'));
+        }
         return view('members.view-member');
     }
 
