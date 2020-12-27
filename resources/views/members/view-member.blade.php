@@ -15,7 +15,7 @@
                      <div class="col-sm-6">
                         <div class="form-group">
                           <label>Sort By</label>
-                           <select class="form-control"  id="">
+                           <select class="form-control" name="" id="">
                                <option>Select One</option>
                                <option>Member Code</option>
                                <option>Member Name</option>
@@ -151,9 +151,6 @@
      $('#myTable').DataTable();
 } );
  </script>
-
-
-
 
  <script>
 $(function() {
