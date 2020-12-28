@@ -18,20 +18,20 @@
                      <div class="col-sm-6">
                         <div class="form-group">
                           <label>Sort By</label>
-                           <select class="form-control" name="" id="">
+                           <select class="form-control" name="sort_by" id="">
                                <option>Select One</option>
-                               <option>Member Code</option>
-                               <option>Member Name</option>
-                               <option>Mobile Number</option>
+                               <option value="member code">Member Code</option>
+                               <option value="member name">Member Name</option>
+                               <option value="mobile number">Mobile Number</option>
                             </select>
                         </div>
                      </div>
-                   <div class="col-sm-6">
-                      <div class="form-group">
-                         <label>Member Code / Member Name / Member Number</label>
-                         <input type="text" class="form-control" id="">
-                      </div>
-                   </div>
+                     <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Member Code / Member Name / Member Number</label>
+                            <input type="text" value="sort_value" class="form-control" id="">
+                        </div>
+                     </div>
                  </div>
 
                     {{-- 2nd Sponsor Code--}}
@@ -39,16 +39,16 @@
                      <div class="col-sm-6">
                         <div class="form-group">
                           <label>Sponsor Code</label>
-                          <input type="text" class="form-control" id="">
+                          <input type="text" value="sponser_code" class="form-control" id="">
                         </div>
                      </div>
                      <div class="col-sm-6">
                          <div class="form-group">
                            <label>Left / Right</label>
-                           <select class="form-control" id="">
+                           <select class="form-control" name="side" id="">
                                <option>All</option>
-                               <option>Left</option>
-                               <option>Right</option>
+                               <option value="left">Left</option>
+                               <option value="right">Right</option>
                            </select>
                         </div>
                      </div>
@@ -136,13 +136,6 @@
                     <th scope="row">{{ $loop->index+1 }}</th>
                     <td>{{ $member->name }}</td>
                     <td>{{ $member->user_id }}</td>
-{{--                    @php--}}
-{{--                        if (isset($member->address) && !empty($member->address) && $member->address != 'null')--}}
-{{--                        {--}}
-{{--                            $address = json_decode($member->address, true);--}}
-{{--                        }--}}
-{{--                    @endphp--}}
-{{--                    <td>@if(isset($address->address)) {{ $address->address or " " }}  {{ $address->area or " " }} {{ $address->house_no or " " }} {{ $address->state or " " }} {{ $address->district or " " }} @else Address not found @endif </td>--}}
                     <td>{{ date('d-m-Y', strtotime($member->created_at)) }}</td>
                     <td>{{ $member->sponser_id }}</td>
                     <td>{{ $member->sub_sponser_id }}</td>
