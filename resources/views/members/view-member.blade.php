@@ -81,13 +81,13 @@
                          <div class="form-group">
                            <label>Joining Date</label>
                              <input type="text" id="daterange" class="form-control">
-                             <input type="text" id="range-from" name="fromdate" value="December 27, 2020" class="form-control">
+                             <input type="text" id="range-from" name="fromdate" class="form-control" required>
                         </div>
                      </div>
                       <div class="col-md-6">
                           <div class="form-group">
                               <label>To</label>
-                              <input type="text" id="range-to" name="todate" value="December 27, 2020" class="form-control">
+                              <input type="text" id="range-to" name="todate" class="form-control" required>
                           </div>
                       </div>
                   </div>
@@ -119,13 +119,12 @@
     </div>
     <div class="pt-5"></div>
     @isset($members)
-        <table class="table" id="myTable">
+        <table class="table table-bordered table-striped" id="myTable">
           <thead>
             <tr>
               <th scope="col">Sr.no.</th>
               <th scope="col">Name</th>
               <th scope="col">Id No</th>
-              <th scope="col">Address</th>
               <th scope="col">Joining Date</th>
               <th scope="col">Sponsor Id</th>
               <th scope="col">Sub Sponsor Id</th>
@@ -134,13 +133,16 @@
           <tbody>
             @forelse($members as $member)
                 <tr>
-                    <th scope="row">1</th>
+                    <th scope="row">{{ $loop->index+1 }}</th>
                     <td>{{ $member->name }}</td>
                     <td>{{ $member->user_id }}</td>
-                    @php
-                        $address = json_decode($member->address);
-                    @endphp
-                    <td>{{ $address->address }} {{ $address->area }} {{ $address->house_no }} {{ $address->state }} {{ $address->district }}</td>
+{{--                    @php--}}
+{{--                        if (isset($member->address) && !empty($member->address) && $member->address != 'null')--}}
+{{--                        {--}}
+{{--                            $address = json_decode($member->address, true);--}}
+{{--                        }--}}
+{{--                    @endphp--}}
+{{--                    <td>@if(isset($address->address)) {{ $address->address or " " }}  {{ $address->area or " " }} {{ $address->house_no or " " }} {{ $address->state or " " }} {{ $address->district or " " }} @else Address not found @endif </td>--}}
                     <td>{{ date('d-m-Y', strtotime($member->created_at)) }}</td>
                     <td>{{ $member->sponser_id }}</td>
                     <td>{{ $member->sub_sponser_id }}</td>
@@ -156,6 +158,7 @@
         Please Click Search for view data.
     @endisset
 </div>
+    <div class="pt-4"></div>
 @endsection
 
 @push('js')
@@ -173,7 +176,7 @@
 
          duDatepicker('#daterange', {
              range: true, format: 'mmmm d, yyyy', outFormat: 'dd-mm-yyyy', fromTarget: '#range-from', toTarget: '#range-to',
-             clearBtn: true, theme: 'green', maxDate: 'today'
+             clearBtn: true, theme: 'green', maxDate: 'today', setValue: 'today'
          })
          // duDatepicker('#daterange', 'setValue', 'August 2, 2020-August 5, 2020')
      }
