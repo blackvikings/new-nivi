@@ -36,7 +36,7 @@ class MembersController extends Controller
         //output: INV-000001
 
         $member_count = Member::where('sponser_id', $request->sponser_id)->where('sub_sponser_id', $request->sub_sponser_id)->count();
-        if ($member_count != 3 && $request->sub_sponser_id = $request->sponser_id)
+        if ($member_count != 3 && $request->sub_sponser_id != $request->sponser_id)
         {
             $member = new Member;
             $member->user_id = 'NIVI-'.rand(1000000000,9999999999);
@@ -75,16 +75,13 @@ class MembersController extends Controller
     {
         if($request->has('fromdate') && $request->has("todate"))
         {
-            if($request->has('fromdate'))
-                $formdate = date('Y-m-d H:i:s', strtotime($request->fromdate));
-            if ($request->has('todate'))
-                $todate = date('Y-m-d H:i:s', strtotime($request->todate));
-
-            $members = Member::where('id', '>', Auth::guard('members')->user()->id)
-                                ->whereBetween('created_at', [$formdate, $todate])
-                                ->paginate($request->limit_value);
-//            dd($members->toArray());
-            return view('members.view-member', compact('members', 'formdate', 'todate'));
+            // dd($request->all());
+            $formdate = date('Y-m-d h:i:s', strtotime($request->fromdate));
+            $todate = date('Y-m-d h:i:s', strtotime($request->todate));
+            $members = Member::where('id', '>', Auth::guard('members')->user()->id)->whereBetween('created_at', [$formdate, $todate])->limit($request->limit_value)->get();
+//                dd(Auth::guard('members')->user()->id);
+//                dd($members->toArray());
+            return view('members.view-member', compact('members'));
         }
         return view('members.view-member');
     }
