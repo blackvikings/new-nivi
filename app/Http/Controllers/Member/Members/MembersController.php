@@ -71,18 +71,20 @@ class MembersController extends Controller
 
     }
 
-
     public function viewMember(Request $request)
     {
-        if($request->isMethod('post'))
+        if($request->has('fromdate') && $request->has("todate"))
         {
-            dd($request->all());
-            $formdate = date('Y-m-d H:i:s', strtotime($request->fromdate));
-            $todate = date('Y-m-d H:i:s', strtotime($request->todate));
-            $members = Member::where('id', '>', Auth::guard('members')->user()->id)->whereBetween('created_at', [$formdate, $todate])->limit($request->limit_value)->get();
-//                dd(Auth::guard('members')->user()->id);
-//                dd($members->toArray());
-            return view('members.view-member', compact('members'));
+            if($request->has('fromdate'))
+                $formdate = date('Y-m-d H:i:s', strtotime($request->fromdate));
+            if ($request->has('todate'))
+                $todate = date('Y-m-d H:i:s', strtotime($request->todate));
+
+            $members = Member::where('id', '>', Auth::guard('members')->user()->id)
+                                ->whereBetween('created_at', [$formdate, $todate])
+                                ->paginate($request->limit_value);
+//            dd($members->toArray());
+            return view('members.view-member', compact('members', 'formdate', 'todate'));
         }
         return view('members.view-member');
     }

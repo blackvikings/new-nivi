@@ -38,8 +38,8 @@ Route::group(['middleware' => 'auth:members' , 'as' => 'member.'], function () {
     Route::get('/add-member', [MembersController::class, 'index'])->name('addMember');
     Route::post('/add-member', [MembersController::class, 'store'])->name('addMember.store');
     Route::get('/direct-member', [MembersController::class, 'directMember'])->name('direct');
-    Route::get('/view-member', [MembersController::class, 'viewMember'])->name('view');
-    Route::post('/view-member', [MembersController::class, 'viewMember'])->name('view.data');
+    Route::any('/view-member', [MembersController::class, 'viewMember'])->name('view');
+//    Route::get('/view-member/table', [MembersController::class, 'viewMember'])->name('view.data');
 });
 
 

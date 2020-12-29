@@ -2,16 +2,16 @@
 @section('title', 'View Member')
     @push('css')
         <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
-        <link rel="stylesheet" type="text/css" href="{{ asset('public/assets/dist/duDatepicker.min.css') }}">
-        <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" type="text/css" href="{{ asset('public/assets/dist/duDatepicker-theme.css') }}">
+{{--        <link rel="stylesheet" type="text/css" href="{{ asset('public/assets/dist/duDatepicker.min.css') }}">--}}
+{{--        <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">--}}
+{{--        <link rel="stylesheet" type="text/css" href="{{ asset('public/assets/dist/duDatepicker-theme.css') }}">--}}
     @endpush
 @section('content')
 <div class="container pt-3">
 
     <div class="row card shadow p-3">
         <div class="col-sm-12">
-            <form method="POST" action="{{ route('member.view.data') }}" >
+            <form method="POST" action="{{ route('member.view') }}" >
                 @csrf
                  {{-- 1st --}}
                  <div class="row">
@@ -19,7 +19,6 @@
                         <div class="form-group">
                           <label>Sort By</label>
                            <select class="form-control" name="sort_by" id="">
-                               <option>Select One</option>
                                <option value="member code">Member Code</option>
                                <option value="member name">Member Name</option>
                                <option value="mobile number">Mobile Number</option>
@@ -46,7 +45,7 @@
                          <div class="form-group">
                            <label>Left / Right</label>
                            <select class="form-control" name="side1" id="">
-                               <option>All</option>
+                               <option value="all">All</option>
                                <option value="left">Left</option>
                                <option value="right">Right</option>
                            </select>
@@ -66,7 +65,7 @@
                          <div class="form-group">
                            <label>Left / Right</label>
                            <select class="form-control" name="side2" id="">
-                               <option>All</option>
+                               <option value="all">All</option>
                                <option value="left">Left</option>
                                <option value="right">Right</option>
                            </select>
@@ -80,14 +79,14 @@
                      <div class="col-sm-6">
                          <div class="form-group">
                            <label>Joining Date</label>
-                             <input type="text" id="daterange" class="form-control">
-                             <input type="text" id="range-from" name="fromdate" class="form-control" required>
+{{--                             <input type="text" id="daterange" class="form-control">--}}
+                             <input type="text" id="range-from" name="fromdate" @isset($fromdate) value="{{ $fromdate }}" @endisset class="form-control">
                         </div>
                      </div>
                       <div class="col-md-6">
                           <div class="form-group">
                               <label>To</label>
-                              <input type="text" id="range-to" name="todate" class="form-control" required>
+                              <input type="text" id="range-to" name="todate" @isset($todate) value="{{ $todate }}" @endisset class="form-control">
                           </div>
                       </div>
                   </div>
@@ -117,8 +116,8 @@
             </form>
         </div>
     </div>
-    <div class="pt-5"></div>
     @isset($members)
+    <div class="pt-5"></div>
         <table class="table table-bordered table-striped" id="myTable">
           <thead>
             <tr>
@@ -147,8 +146,10 @@
             @endforelse
           </tbody>
         </table>
+
+                {!! $members->render() !!}
     @else
-        Please Click Search for view data.
+        Please choose dates then click submit button for memebers view.
     @endisset
 </div>
     <div class="pt-4"></div>
@@ -157,22 +158,24 @@
 @push('js')
 
 <script type="text/javascript" src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="{{ asset('public/assets/dist/duDatepicker.min.js') }}"></script>
+{{--<script type="text/javascript" src="{{ asset('public/assets/dist/duDatepicker.min.js') }}"></script>--}}
 
  <script type="text/javascript">
-     $(document).ready( function () {
-     $('#myTable').DataTable();
-});
+//      $(document).ready( function () {
+//      $('#myTable').DataTable();
+// });
 
 
-     window.onload = function () {
+{{--     window.onload = function () {--}}
 
-         duDatepicker('#daterange', {
-             range: true, format: 'mmmm d, yyyy', outFormat: 'dd-mm-yyyy', fromTarget: '#range-from', toTarget: '#range-to',
-             clearBtn: true, theme: 'green', maxDate: 'today', setValue: 'today'
-         })
-         // duDatepicker('#daterange', 'setValue', 'August 2, 2020-August 5, 2020')
-     }
+{{--         duDatepicker('#daterange', {--}}
+{{--             range: true, format: 'mmmm d, yyyy', outFormat: 'dd-mm-yyyy', fromTarget: '#range-from', toTarget: '#range-to',--}}
+{{--             clearBtn: true, theme: 'green', maxDate: 'today'--}}
+{{--         })--}}
+{{--         @if(old('fromdate'))--}}
+{{--            duDatepicker('#daterange', 'setValue', '{!! $fromdate !!}-{!! $todate !!}');--}}
+{{--         @endif--}}
+{{--     }--}}
 
  </script>
 @endpush
