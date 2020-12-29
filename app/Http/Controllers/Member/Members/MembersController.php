@@ -76,9 +76,10 @@ class MembersController extends Controller
     {
         if($request->isMethod('post'))
         {
+            dd($request->all());
             $formdate = date('Y-m-d H:i:s', strtotime($request->fromdate));
             $todate = date('Y-m-d H:i:s', strtotime($request->todate));
-            $members = Member::where('id', '>', Auth::guard('members')->user()->id)->whereBetween('created_at', [$formdate, $todate])->get();
+            $members = Member::where('id', '>', Auth::guard('members')->user()->id)->whereBetween('created_at', [$formdate, $todate])->limit($request->limit_value)->get();
 //                dd(Auth::guard('members')->user()->id);
 //                dd($members->toArray());
             return view('members.view-member', compact('members'));

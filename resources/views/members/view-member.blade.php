@@ -29,7 +29,7 @@
                      <div class="col-sm-6">
                         <div class="form-group">
                             <label>Member Code / Member Name / Member Number</label>
-                            <input type="text" value="sort_value" class="form-control" id="">
+                            <input type="text" name="sort_value" class="form-control" id="">
                         </div>
                      </div>
                  </div>
@@ -39,13 +39,13 @@
                      <div class="col-sm-6">
                         <div class="form-group">
                           <label>Sponsor Code</label>
-                          <input type="text" value="sponser_code" class="form-control" id="">
+                          <input type="text" name="sponser_code" class="form-control" id="">
                         </div>
                      </div>
                      <div class="col-sm-6">
                          <div class="form-group">
                            <label>Left / Right</label>
-                           <select class="form-control" name="side" id="">
+                           <select class="form-control" name="side1" id="">
                                <option>All</option>
                                <option value="left">Left</option>
                                <option value="right">Right</option>
@@ -59,16 +59,16 @@
                      <div class="col-sm-6">
                         <div class="form-group">
                           <label>Sub-Sponsor Code</label>
-                          <input type="text" class="form-control" id="">
+                          <input type="text" name="sub_sponser_id" class="form-control" id="">
                         </div>
                      </div>
                      <div class="col-sm-6">
                          <div class="form-group">
                            <label>Left / Right</label>
-                           <select class="form-control" id="">
+                           <select class="form-control" name="side2" id="">
                                <option>All</option>
-                               <option>Left</option>
-                               <option>Right</option>
+                               <option value="left">Left</option>
+                               <option value="right">Right</option>
                            </select>
                         </div>
                      </div>
@@ -98,7 +98,7 @@
                      <div class="col-sm-6">
                         <div class="form-group">
                           <label>Record per Page</label>
-                          <input type="number" class="form-control" id="">
+                          <input type="number" name="limit_value" value="30" class="form-control" id="">
                         </div>
                      </div>
                      <div class="col-sm-6">
