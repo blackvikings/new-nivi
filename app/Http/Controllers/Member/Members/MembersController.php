@@ -71,10 +71,9 @@ class MembersController extends Controller
 
     }
 
-
     public function viewMember(Request $request)
     {
-        if($request->isMethod('post'))
+        if($request->has('fromdate') && $request->has("todate"))
         {
             // dd($request->all());
             $formdate = date('Y-m-d h:i:s', strtotime($request->fromdate));
