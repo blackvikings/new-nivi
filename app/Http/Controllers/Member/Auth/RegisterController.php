@@ -33,7 +33,7 @@ class RegisterController extends Controller
 //
 //        ]);
 
-                    
+
             Session::flash('user_id');
             Session::flash('password');
 
@@ -50,7 +50,7 @@ class RegisterController extends Controller
                 $imgname = time().'.'.$image->getClientOriginalExtension();
                 $destinationPath = public_path('/uploads/member-images');
                 $image->move($destinationPath, $imgname);
-                $member->profile_pic = 'public/uploads/'.$imgname;
+                $member->profile_pic = 'public/uploads/member-images/'.$imgname;
             }
 
             if($request->has('aadharImage'))
@@ -89,7 +89,7 @@ class RegisterController extends Controller
             //     'member_id' => $member->user_id,
             //     'password' => $password,
             // ];
-            
+
             Session::put('user_id', $member->user_id);
             Session::put('password', $password);
 

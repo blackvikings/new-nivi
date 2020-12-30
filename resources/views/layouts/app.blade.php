@@ -58,7 +58,7 @@
                     <ul>
                         <li class="{{ request()->is('add-member') ? 'active' : '' }}"><a href="{{ route('member.addMember') }}">Add Member</a></li>
                         <li class="{{ request()->is('direct-member') ? 'active' : '' }}"><a href="{{ route('member.direct') }}">Direct Sponsor</a></li>
-                        <li><a class="{{ request()->is('binary-tree') ? 'active' : '' }}" href="{{ route('member.binaryTree') }}">Binary Tree</a></li>
+                        <li class="{{ request()->is('binary-tree') ? 'active' : '' }}"><a href="{{ route('member.binaryTree') }}">Binary Tree</a></li>
                         <li class="{{ request()->is('view-member') ? 'active' : '' }}"><a href="{{ route('member.view') }}">View Members</a></li>
                     </ul>
                 </li>

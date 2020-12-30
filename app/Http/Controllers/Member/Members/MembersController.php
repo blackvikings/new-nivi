@@ -108,8 +108,6 @@ class MembersController extends Controller
         return view('members.view-member');
     }
 
-
-
     public function directMember()
     {
         $id= Auth::guard('members')->user()->user_id;
@@ -120,7 +118,216 @@ class MembersController extends Controller
 
     public function binaryTree()
     {
+        $member1 = Member::where('id', Auth::guard('members')->user()->id)->first();
+        $member1_1 = Member::where('left_or_right', 'right')->orWhere('sponser_id', $member1->user_id)->orWhere('sub_sponser_id', $member1->user_id)->first();
+        $member1_2 = Member::where('left_or_right', 'left')->orWhere('sponser_id', $member1->user_id)->orWhere('sub_sponser_id', $member1->user_id)->first();
 
-        return view('members.binary-tree');
+        $html = '<div class="body genealogy-body genealogy-scroll">
+                    <div class="genealogy-tree">
+                        <ul>
+                            <li>
+                                <a href="javascript:void(0);">
+                                    <div class="member-view-box" id="example">
+                                        <div class="member-image">
+                                            <img src="'.$member1->profile_pic.'" width="145" alt="Member">
+                                            <div class="member-details">
+                                                <h3>'.$member1->name.'</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <ul class="active">
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            <div class="member-view-box">
+                                                <div class="member-image">
+                                                    <img src="'.(!empty($member1_2->profile_pic) ? $member1_2->profile_pic : "https://image.flaticon.com/icons/svg/145/145867.svg" ).'" alt="Member">
+                                                    <div class="member-details">
+                                                        <h3>'.(!empty($member1_2->name) ? $member1_2->name : "Register").'</h3>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <ul class="active">
+                                            <li>
+                                                <a href="javascript:void(0);">
+                                                    <div class="member-view-box">
+                                                        <div class="member-image">
+                                                            <img src="https://image.flaticon.com/icons/svg/145/145867.svg" alt="Member">
+                                                            <div class="member-details">
+                                                               <h3>cxvccvxcx</h3>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                                <!-- 44444444444444444---start----444444444 -->
+                                                <ul class="active">
+                                                    <li>
+                                                        <a href="javascript:void(0);">
+                                                            <div class="member-view-box">
+                                                                <div class="member-image">
+                                                                    <img src="https://image.flaticon.com/icons/svg/145/145867.svg" alt="Member">
+                                                                    <div class="member-details">
+                                                                        <h3>scxsd</h3>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:void(0);">
+                                                            <div class="member-view-box">
+                                                                <div class="member-image">
+                                                                    <img src="https://image.flaticon.com/icons/svg/145/145867.svg" alt="Member">
+                                                                    <div class="member-details">
+                                                                        <h3>Member 1-1-2</h3>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                                <!-- 44444444444444------End------444444444444444 -->
+                                            </li>
+                                            <li>
+                                                <a href="javascript:void(0);">
+                                                    <div class="member-view-box">
+                                                        <div class="member-image">
+                                                            <img src="https://image.flaticon.com/icons/svg/145/145867.svg" alt="Member">
+                                                            <div class="member-details">
+                                                                <h3>Member 1-2</h3>
+                                                                <!-- Member 1-7 -->
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                                <ul class="active">
+                                                    <li>
+                                                        <a href="javascript:void(0);">
+                                                            <div class="member-view-box">
+                                                                <div class="member-image">
+                                                                    <img src="https://image.flaticon.com/icons/svg/145/145867.svg" alt="Member">
+                                                                    <div class="member-details">
+                                                                        <h3>Member 1-2-1</h3>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:void(0);">
+                                                            <div class="member-view-box">
+                                                                <div class="member-image">
+                                                                    <img src="https://image.flaticon.com/icons/svg/145/145867.svg" alt="Member">
+                                                                    <div class="member-details">
+                                                                        <h3>Member 1-2-2</h3>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            <div class="member-view-box">
+                                                <div class="member-image">
+                                                    <img src="'.(!empty($member1_1->profile_pic) ? $member1_1->profile_pic : "https://image.flaticon.com/icons/svg/145/145867.svg" ).'" alt="Member">
+                                                    <div class="member-details">
+                                                        <h3>'.(!empty($member1_1->name) ? $member1_1->name : "Register").'</h3>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <ul class="active">
+                                            <li>
+                                                <a href="javascript:void(0);">
+                                                    <div class="member-view-box">
+                                                        <div class="member-image">
+                                                            <img src="https://image.flaticon.com/icons/svg/145/145867.svg" alt="Member">
+                                                            <div class="member-details">
+                                                                <h3>John Doe 2-1</h3>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                                <ul class="active">
+                                                    <li>
+                                                        <a href="javascript:void(0);">
+                                                            <div class="member-view-box">
+                                                                <div class="member-image">
+                                                                    <img src="https://image.flaticon.com/icons/svg/145/145867.svg" alt="Member">
+                                                                    <div class="member-details">
+                                                                        <h3>Member 2-1-1</h3>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:void(0);">
+                                                            <div class="member-view-box">
+                                                                <div class="member-image">
+                                                                    <img src="https://image.flaticon.com/icons/svg/145/145867.svg" alt="Member">
+                                                                    <div class="member-details">
+                                                                        <h3>Member 2-1-2</h3>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:void(0);">
+                                                    <div class="member-view-box">
+                                                        <div class="member-image">
+                                                            <img src="https://image.flaticon.com/icons/svg/145/145867.svg" alt="Member">
+                                                            <div class="member-details">
+                                                                <h3>John Doe 2-2</h3>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                                <ul class="active">
+                                                    <li>
+                                                        <a href="javascript:void(0);">
+                                                            <div class="member-view-box">
+                                                                <div class="member-image">
+                                                                    <img src="https://image.flaticon.com/icons/svg/145/145867.svg" alt="Member">
+                                                                    <div class="member-details">
+                                                                        <h3>Member 2-2-1</h3>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:void(0);">
+                                                            <div class="member-view-box">
+                                                                <div class="member-image">
+                                                                    <img src="https://image.flaticon.com/icons/svg/145/145867.svg" alt="Member">
+                                                                    <div class="member-details">
+                                                                        <h3>Member 2-2-2</h3>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+';
+
+
+        return view('members.binary-tree', compact('html'));
     }
 }
