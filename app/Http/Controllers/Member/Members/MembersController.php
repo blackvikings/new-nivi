@@ -120,6 +120,7 @@ class MembersController extends Controller
 
     public function binaryTree()
     {
+
         return view('members.binary-tree');
     }
 }
