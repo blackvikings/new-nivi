@@ -66,7 +66,7 @@ class MembersController extends Controller
         else
         {
             toastr()->error('The sponser have already two members.');
-            return Redirect::route('member.addMember');
+            return Redirect::back();
         }
 
     }
@@ -75,13 +75,35 @@ class MembersController extends Controller
     {
         if($request->has('fromdate') && $request->has("todate"))
         {
-            // dd($request->all());
             $formdate = date('Y-m-d h:i:s', strtotime($request->fromdate));
             $todate = date('Y-m-d h:i:s', strtotime($request->todate));
-            $members = Member::where('id', '>', Auth::guard('members')->user()->id)->whereBetween('created_at', [$formdate, $todate])->limit($request->limit_value)->get();
-//                dd(Auth::guard('members')->user()->id);
-//                dd($members->toArray());
-            return view('members.view-member', compact('members'));
+
+            $sponser_code = $request->sponser_code;
+            $side1 = $request->side1;
+            $sub_sponser_id = $request->sub_sponser_id;
+            $side2 = $request->side2;
+//            if($sponser_code || $side1 || $sub_sponser_id || $side2) {
+                $members = Member::where('id', '>', Auth::guard('members')->user()->id)->whereBetween('created_at', [$formdate, $todate])->get();
+//                if(!empty($request->sponser_code))
+//                {
+//                    $members->where('sponser_id', $sponser_code);
+//                }
+//                if(!empty($request->side1))
+//                {
+//                    $members->where('left_or_right', $side1);
+//                }
+//                if(!empty($request->sub_sponser_id))
+//                {
+//                    $members->where('sub_sponser_id', $sub_sponser_id);
+//                }
+//                if (!empty($request->side2))
+//                {
+//                    $members->where('left_or_right', $side2);
+//                }
+//                $rows = $members->orderBy('id', 'asc')->get();
+//                    dd($rows->toArray());
+                return view('members.view-member', ['members' => $members]);
+//            }
         }
         return view('members.view-member');
     }
@@ -94,5 +116,10 @@ class MembersController extends Controller
         $members = Member::where('user_id', '!=', $id)->where('sponser_id', $id)->get();
         // dd($members->toArray());
         return view('members.direct-member', compact('members'));
+    }
+
+    public function binaryTree()
+    {
+        return view('members.binary-tree');
     }
 }

@@ -20,7 +20,7 @@
                             <div class="form-row">
                                 <div class="col-md-4 form-group @error('name') has-error @enderror ">
                                     <label>Enter Name</label>
-                                    <input type="text" id="name" name="name" class="form-control @error('name') is-invalid @enderror " value="{{ old('name') }}" required>
+                                    <input type="text" id="name" value="{{ old('name') }}" name="name" class="form-control @error('name') is-invalid @enderror " value="{{ old('name') }}" required>
                                     @error('name')
                                         <span class="invalid-feedback">
                                             {{ $message }}
@@ -29,7 +29,7 @@
                                 </div>
                                 <div class="col-md-4 form-group @error('phone_no') has-error @enderror ">
                                     <label>Phone Number</label>
-                                    <input type="text" class="form-control @error('phone_no') is-invalid @enderror " name="phone_no" id="" value="{{ old('phone_no') }}"/>
+                                    <input type="text" value="{{ old('phone_no') }}" class="form-control @error('phone_no') is-invalid @enderror " name="phone_no" id="" value="{{ old('phone_no') }}"/>
                                     @error('phone_no')
                                         <span class="invalid-feedback">
                                             {{ $message }}
