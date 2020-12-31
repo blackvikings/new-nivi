@@ -360,36 +360,41 @@
 
 @endsection
 @push('js')
-    <script type="text/javascript">
-        $(function () {
-            $('.genealogy-tree ul').hide();
-            $('.genealogy-tree>ul').show();
-            $('.genealogy-tree ul.active').show();
-            $('.genealogy-tree li').on('click', function (e) {
-                var children = $(this).find('> ul');
-                if (children.is(":visible")) children.hide('fast').removeClass('active');
-                else children.show('fast').addClass('active');
-                e.stopPropagation();
-            });
-        });
-    </script>
+{{--    <script type="text/javascript">--}}
+{{--        $(function () {--}}
+{{--            $('.genealogy-tree ul').hide();--}}
+{{--            $('.genealogy-tree>ul').show();--}}
+{{--            $('.genealogy-tree ul.active').show();--}}
+{{--            $('.genealogy-tree li').on('click', function (e) {--}}
+{{--                var children = $(this).find('> ul');--}}
+{{--                if (children.is(":visible")) children.hide('fast').removeClass('active');--}}
+{{--                else children.show('fast').addClass('active');--}}
+{{--                e.stopPropagation();--}}
+{{--            });--}}
+{{--        });--}}
+{{--    </script>--}}
 
     <!-- popover -->
     <script type="text/javascript">
-        $('#example').popover({
-            html : true,
-            trigger : 'manual',
-            content : function() {
-                return '<div class="box">User ID : 001</div> <div class="box">DOJ : 02-10-2020</div>';
-            }
-        });
 
-        $(document).on('mouseover', '#example', function(){
-            $('#example').popover('show');
-        });
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
 
-        $(document).on('mouseleave', '#example', function(){
-            $('#example').popover('hide');
-        });
+        // $('#example').popover({
+        //     html : true,
+        //     trigger : 'manual',
+        //     content : function() {
+        //         return '<div class="box">User ID : 001</div> <div class="box">DOJ : 02-10-2020</div>';
+        //     }
+        // });
+        //
+        // $(document).on('mouseover', '#example', function(){
+        //     $('#example').popover('show');
+        // });
+        //
+        // $(document).on('mouseleave', '#example', function(){
+        //     $('#example').popover('hide');
+        // });
     </script>
 @endpush

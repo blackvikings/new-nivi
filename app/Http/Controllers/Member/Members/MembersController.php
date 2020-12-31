@@ -119,15 +119,63 @@ class MembersController extends Controller
     public function binaryTree()
     {
         $member1 = Member::where('id', Auth::guard('members')->user()->id)->first();
-        $member1_1 = Member::where('left_or_right', 'right')->orWhere('sponser_id', $member1->user_id)->orWhere('sub_sponser_id', $member1->user_id)->first();
-        $member1_2 = Member::where('left_or_right', 'left')->orWhere('sponser_id', $member1->user_id)->orWhere('sub_sponser_id', $member1->user_id)->first();
+
+        $name = 'Register';
+        $image = 'https://image.flaticon.com/icons/svg/145/145867.svg';
+
+        if (!empty($member1->user_id))
+        {
+            $member1_1 = Member::where('left_or_right', 'right')->where('sub_sponser_id', $member1->user_id)->first();
+        }
+        if(!empty($member1_1->user_id))
+        {
+            $member1_1_1 = Member::where('left_or_right', 'left')->where('sub_sponser_id', $member1_1->user_id)->first();
+            $member1_1_2 = Member::where('left_or_right', 'right')->where('sub_sponser_id', $member1_1->user_id)->first();
+        }
+
+        if(!empty($member1_1_1->user_id))
+        {
+            $member1_1_1_1 = Member::where('left_or_right', 'left')->where('sub_sponser_id', $member1_1_1->user_id)->first();
+            $member1_1_1_2 = Member::where('left_or_right', 'right')->where('sub_sponser_id', $member1_1_1->user_id)->first();
+        }
+
+        if(!empty($member1_1_2->user_id))
+        {
+            $member1_1_2_1 = Member::where('left_or_right', 'left')->where('sub_sponser_id', $member1_1_2->user_id)->first();
+            $member1_1_2_2 = Member::where('left_or_right', 'right')->where('sub_sponser_id', $member1_1_2->user_id)->first();
+        }
+
+        //------------****--------//
+
+        if (!empty($member1->user_id))
+        {
+            $member1_2 = Member::where('left_or_right', 'left')->where('sub_sponser_id', $member1->user_id)->first();
+        }
+
+        if(!empty($member1_2->user_id))
+        {
+            $member1_2_1 = Member::where('left_or_right', 'left')->where('sub_sponser_id', $member1_2->user_id)->first();
+            $member1_2_2 = Member::where('left_or_right', 'right')->where('sub_sponser_id', $member1_2->user_id)->first();
+        }
+
+        if(!empty($member1_2_1->user_id))
+        {
+            $member1_2_1_1 = Member::where('left_or_right', 'left')->where('sub_sponser_id', $member1_2_1->user_id)->first();
+            $member1_2_1_2 = Member::where('left_or_right', 'right')->where('sub_sponser_id', $member1_2_1->user_id)->first();
+        }
+
+        if (!empty($member1_2_2->user_id))
+        {
+            $member1_2_2_1 = Member::where('left_or_right', 'left')->where('sub_sponser_id', $member1_2_2->user_id)->first();
+            $member1_2_2_2 = Member::where('left_or_right', 'right')->where('sub_sponser_id', $member1_2_2->user_id)->first();
+        }
 
         $html = '<div class="body genealogy-body genealogy-scroll">
                     <div class="genealogy-tree">
                         <ul>
                             <li>
-                                <a href="javascript:void(0);">
-                                    <div class="member-view-box" id="example">
+                                <a href="#">
+                                    <div class="member-view-box"  data-toggle="tooltip" data-placement="right" data-html="true" title="<em>Tooltip</em> <br> <u>with</u> <br> <b>HTML</b>">
                                         <div class="member-image">
                                             <img src="'.$member1->profile_pic.'" width="145" alt="Member">
                                             <div class="member-details">
@@ -141,9 +189,9 @@ class MembersController extends Controller
                                         <a href="javascript:void(0);">
                                             <div class="member-view-box">
                                                 <div class="member-image">
-                                                    <img src="'.(!empty($member1_2->profile_pic) ? $member1_2->profile_pic : "https://image.flaticon.com/icons/svg/145/145867.svg" ).'" alt="Member">
+                                                    <img src="'.(!empty($member1_2->profile_pic) ? $member1_2->profile_pic : $image ).'" alt="Member">
                                                     <div class="member-details">
-                                                        <h3>'.(!empty($member1_2->name) ? $member1_2->name : "Register").'</h3>
+                                                        <h3>'.(!empty($member1_2->name) ? $member1_2->name : $name ).'</h3>
                                                     </div>
                                                 </div>
                                             </div>
@@ -153,9 +201,9 @@ class MembersController extends Controller
                                                 <a href="javascript:void(0);">
                                                     <div class="member-view-box">
                                                         <div class="member-image">
-                                                            <img src="https://image.flaticon.com/icons/svg/145/145867.svg" alt="Member">
+                                                            <img src="'.(!empty($member1_2_1->profile_pic) ? $member1_2_1->profile_pic : $image ).'" alt="Member">
                                                             <div class="member-details">
-                                                               <h3>cxvccvxcx</h3>
+                                                               <h3>'.(!empty($member1_2_1->name) ? $member1_2_1->name : $name).'</h3>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -166,9 +214,9 @@ class MembersController extends Controller
                                                         <a href="javascript:void(0);">
                                                             <div class="member-view-box">
                                                                 <div class="member-image">
-                                                                    <img src="https://image.flaticon.com/icons/svg/145/145867.svg" alt="Member">
+                                                                    <img src="'.(!empty($member1_2_1_1->profile_pic) ? $member1_2_1_1->profile_pic : $image).'" alt="Member">
                                                                     <div class="member-details">
-                                                                        <h3>scxsd</h3>
+                                                                        <h3>'.(!empty($member1_2_1_1->name) ? $member1_2_1_1->name : $name).'</h3>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -178,9 +226,9 @@ class MembersController extends Controller
                                                         <a href="javascript:void(0);">
                                                             <div class="member-view-box">
                                                                 <div class="member-image">
-                                                                    <img src="https://image.flaticon.com/icons/svg/145/145867.svg" alt="Member">
+                                                                    <img src="'.(!empty($member1_2_1_2->profile_pic) ? $member1_2_1_2->profile : $image).'" alt="Member">
                                                                     <div class="member-details">
-                                                                        <h3>Member 1-1-2</h3>
+                                                                        <h3>'.(!empty($member1_2_1_2->name) ? $member1_2_1_2->name : $name).'</h3>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -193,9 +241,9 @@ class MembersController extends Controller
                                                 <a href="javascript:void(0);">
                                                     <div class="member-view-box">
                                                         <div class="member-image">
-                                                            <img src="https://image.flaticon.com/icons/svg/145/145867.svg" alt="Member">
+                                                            <img src="'.(!empty($member1_2_2->profile_pic) ? $member1_2_2->profile_pic : $image).'" alt="Member">
                                                             <div class="member-details">
-                                                                <h3>Member 1-2</h3>
+                                                                <h3>'.(!empty($member1_2_2->name) ? $member1_2_2->name : $name).'</h3>
                                                                 <!-- Member 1-7 -->
                                                             </div>
                                                         </div>
@@ -206,9 +254,9 @@ class MembersController extends Controller
                                                         <a href="javascript:void(0);">
                                                             <div class="member-view-box">
                                                                 <div class="member-image">
-                                                                    <img src="https://image.flaticon.com/icons/svg/145/145867.svg" alt="Member">
+                                                                    <img src="'.(!empty($member1_2_2_1->profile_pic) ? $member1_2_2_1->profile_pic : $image).'" alt="Member">
                                                                     <div class="member-details">
-                                                                        <h3>Member 1-2-1</h3>
+                                                                        <h3>'.(!empty($member1_2_2_1->name) ? $member1_2_2_1->name : $name).'</h3>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -218,9 +266,9 @@ class MembersController extends Controller
                                                         <a href="javascript:void(0);">
                                                             <div class="member-view-box">
                                                                 <div class="member-image">
-                                                                    <img src="https://image.flaticon.com/icons/svg/145/145867.svg" alt="Member">
+                                                                    <img src="'.(!empty($member1_2_2_2->profile_pic) ? $member1_2_2_2->profile_pic : $image).'" alt="Member">
                                                                     <div class="member-details">
-                                                                        <h3>Member 1-2-2</h3>
+                                                                        <h3>'.(!empty($member1_2_2_2->name) ? $member1_2_2_2->name : $name).'</h3>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -234,9 +282,9 @@ class MembersController extends Controller
                                         <a href="javascript:void(0);">
                                             <div class="member-view-box">
                                                 <div class="member-image">
-                                                    <img src="'.(!empty($member1_1->profile_pic) ? $member1_1->profile_pic : "https://image.flaticon.com/icons/svg/145/145867.svg" ).'" alt="Member">
+                                                    <img src="'.(!empty($member1_1->profile_pic) ? $member1_1->profile_pic : $image ).'" alt="Member">
                                                     <div class="member-details">
-                                                        <h3>'.(!empty($member1_1->name) ? $member1_1->name : "Register").'</h3>
+                                                        <h3>'.(!empty($member1_1->name) ? $member1_1->name : $name ).'</h3>
                                                     </div>
                                                 </div>
                                             </div>
@@ -246,9 +294,9 @@ class MembersController extends Controller
                                                 <a href="javascript:void(0);">
                                                     <div class="member-view-box">
                                                         <div class="member-image">
-                                                            <img src="https://image.flaticon.com/icons/svg/145/145867.svg" alt="Member">
+                                                            <img src="'.(!empty($member1_1_1->profile_pic) ? $member1_1_1->profile_pic : $image ).'" alt="Member">
                                                             <div class="member-details">
-                                                                <h3>John Doe 2-1</h3>
+                                                                <h3>'.(!empty($member1_1_1->name) ? $member1_1_1->name : $name).'</h3>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -258,9 +306,9 @@ class MembersController extends Controller
                                                         <a href="javascript:void(0);">
                                                             <div class="member-view-box">
                                                                 <div class="member-image">
-                                                                    <img src="https://image.flaticon.com/icons/svg/145/145867.svg" alt="Member">
+                                                                    <img src="'.(!empty($member1_1_1_1->profile_pic) ? $member1_1_1_1->profile_pic : $image).'" alt="Member">
                                                                     <div class="member-details">
-                                                                        <h3>Member 2-1-1</h3>
+                                                                        <h3>'.(!empty($member1_1_1_1->name) ? $member1_1_1_1->name : $name).'</h3>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -270,9 +318,9 @@ class MembersController extends Controller
                                                         <a href="javascript:void(0);">
                                                             <div class="member-view-box">
                                                                 <div class="member-image">
-                                                                    <img src="https://image.flaticon.com/icons/svg/145/145867.svg" alt="Member">
+                                                                    <img src="'.(!empty($member1_1_1_2->profile_pic) ? $member1_1_1_2->profile_pic : $image ).'" alt="Member">
                                                                     <div class="member-details">
-                                                                        <h3>Member 2-1-2</h3>
+                                                                        <h3>'.(!empty($member1_1_1_2->name) ? $member1_1_1_2->name : $name) .'</h3>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -284,9 +332,9 @@ class MembersController extends Controller
                                                 <a href="javascript:void(0);">
                                                     <div class="member-view-box">
                                                         <div class="member-image">
-                                                            <img src="https://image.flaticon.com/icons/svg/145/145867.svg" alt="Member">
+                                                            <img src="'.(!empty($member1_1_2->profile_pic) ? $member1_1_2->profile_pic : $image).'" alt="Member">
                                                             <div class="member-details">
-                                                                <h3>John Doe 2-2</h3>
+                                                                <h3>'.(!empty($member1_1_2->name) ? $member1_1_2->name : $name).'</h3>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -296,9 +344,9 @@ class MembersController extends Controller
                                                         <a href="javascript:void(0);">
                                                             <div class="member-view-box">
                                                                 <div class="member-image">
-                                                                    <img src="https://image.flaticon.com/icons/svg/145/145867.svg" alt="Member">
+                                                                    <img src="'.(!empty($member1_1_2_1->profile_pic) ? $member1_1_2_1->profile_pic : $image).'" alt="Member">
                                                                     <div class="member-details">
-                                                                        <h3>Member 2-2-1</h3>
+                                                                        <h3>'.(!empty($member1_1_2_1->name) ? $member1_1_2_1->name : $name).'</h3>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -308,9 +356,9 @@ class MembersController extends Controller
                                                         <a href="javascript:void(0);">
                                                             <div class="member-view-box">
                                                                 <div class="member-image">
-                                                                    <img src="https://image.flaticon.com/icons/svg/145/145867.svg" alt="Member">
+                                                                    <img src="'.(!empty($member1_1_2_2->profile_pic) ? $member1_1_2_2->profile_pic : $image).'" alt="Member">
                                                                     <div class="member-details">
-                                                                        <h3>Member 2-2-2</h3>
+                                                                        <h3>'.(!empty($member1_1_2_2->name) ? $member1_1_2_2->name : $name).'</h3>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -326,6 +374,7 @@ class MembersController extends Controller
                     </div>
                 </div>
 ';
+
 
 
         return view('members.binary-tree', compact('html'));
