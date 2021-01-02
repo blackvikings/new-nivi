@@ -177,9 +177,9 @@ class MembersController extends Controller
                                 <a href="#">
                                     <div class="member-view-box"  data-toggle="tooltip" data-placement="right" data-html="true" title="<em>Tooltip</em> <br> <u>with</u> <br> <b>HTML</b>">
                                         <div class="member-image">
-                                            <img src="'.$member1->profile_pic.'" width="145" alt="Member">
+                                            <img src="'.(!empty($member1->profile_pic) ? $member1->profile_pic : $image).'" width="145" alt="Member">
                                             <div class="member-details">
-                                                <h3>'.$member1->name.'</h3>
+                                                <h3>'.(!empty($member1->name) ? $member1->name : $name).'</h3>
                                             </div>
                                         </div>
                                     </div>
