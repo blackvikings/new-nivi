@@ -36,7 +36,7 @@ class MembersController extends Controller
         //output: INV-000001
 
         $member_count = Member::where('sponser_id', $request->sponser_id)->where('sub_sponser_id', $request->sub_sponser_id)->count();
-        if ($member_count != 3 && $request->sub_sponser_id != $request->sponser_id)
+        if ($member_count != 3)
         {
             $member = new Member;
             $member->user_id = 'NIVI-'.rand(1000000000,9999999999);
