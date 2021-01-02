@@ -40,7 +40,7 @@ Route::group(['middleware' => 'auth:members' , 'as' => 'member.'], function () {
     Route::get('/direct-member', [MembersController::class, 'directMember'])->name('direct');
     Route::any('/view-member', [MembersController::class, 'viewMember'])->name('view');
 //    Route::get('/view-member/table', [MembersController::class, 'viewMember'])->name('view.data');
-    Route::any('/binary-tree/{slug?}', [MembersController::class, 'binaryTree'])->name('binaryTree');
+    Route::any('/binary-tree/{user_id?}', [MembersController::class, 'binaryTree'])->name('binaryTree');
 });
 
 

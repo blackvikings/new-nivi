@@ -116,9 +116,12 @@ class MembersController extends Controller
         return view('members.direct-member', compact('members'));
     }
 
-    public function binaryTree()
+    public function binaryTree($user_id = null)
     {
-        $member1 = Member::where('id', Auth::guard('members')->user()->id)->first();
+        if(isset($user_id))
+            $member1 = Member::where('user_id', $user_id)->first();
+        else
+            $member1 = Member::where('user_id', Auth::guard('members')->user()->user_id)->first();
 
         $name = 'Register';
         $image = 'https://image.flaticon.com/icons/svg/145/145867.svg';
@@ -186,7 +189,7 @@ class MembersController extends Controller
                                 </a>
                                 <ul class="active">
                                     <li>
-                                        <a href="javascript:void(0);">
+                                        <a href="'.(!empty($member1_2->user_id) ? url()->current()."/".$member1_2->user_id : url("/add-member") ).'">
                                             <div class="member-view-box">
                                                 <div class="member-image">
                                                     <img src="'.(!empty($member1_2->profile_pic) ? $member1_2->profile_pic : $image ).'" alt="Member">
@@ -198,7 +201,7 @@ class MembersController extends Controller
                                         </a>
                                         <ul class="active">
                                             <li>
-                                                <a href="javascript:void(0);">
+                                                <a href="'.(!empty($member1_2_1->user_id) ? url()->current()."/".$member1_2_1->user_id : url("/add-member") ).'">
                                                     <div class="member-view-box">
                                                         <div class="member-image">
                                                             <img src="'.(!empty($member1_2_1->profile_pic) ? $member1_2_1->profile_pic : $image ).'" alt="Member">
@@ -211,7 +214,7 @@ class MembersController extends Controller
                                                 <!-- 44444444444444444---start----444444444 -->
                                                 <ul class="active">
                                                     <li>
-                                                        <a href="javascript:void(0);">
+                                                        <a href="'.(!empty($member1_2_1_1->user_id) ? url()->current()."/".$member1_2_1_1->user_id : url("/add-member") ).'">
                                                             <div class="member-view-box">
                                                                 <div class="member-image">
                                                                     <img src="'.(!empty($member1_2_1_1->profile_pic) ? $member1_2_1_1->profile_pic : $image).'" alt="Member">
@@ -223,7 +226,7 @@ class MembersController extends Controller
                                                         </a>
                                                     </li>
                                                     <li>
-                                                        <a href="javascript:void(0);">
+                                                        <a href="'.(!empty($member1_2_1_2->user_id) ? url()->current()."/".$member1_2_1_2->user_id : url("/add-member") ).'">
                                                             <div class="member-view-box">
                                                                 <div class="member-image">
                                                                     <img src="'.(!empty($member1_2_1_2->profile_pic) ? $member1_2_1_2->profile : $image).'" alt="Member">
@@ -238,7 +241,7 @@ class MembersController extends Controller
                                                 <!-- 44444444444444------End------444444444444444 -->
                                             </li>
                                             <li>
-                                                <a href="javascript:void(0);">
+                                                <a href="'.(!empty($member1_2_2->user_id) ? url()->current()."/".$member1_2_2->user_id : url("/add-member") ).'">
                                                     <div class="member-view-box">
                                                         <div class="member-image">
                                                             <img src="'.(!empty($member1_2_2->profile_pic) ? $member1_2_2->profile_pic : $image).'" alt="Member">
@@ -251,7 +254,7 @@ class MembersController extends Controller
                                                 </a>
                                                 <ul class="active">
                                                     <li>
-                                                        <a href="javascript:void(0);">
+                                                        <a href="'.(!empty($member1_2_2_1->user_id) ? url()->current()."/".$member1_2_2_1->user_id : url("/add-member") ).'">
                                                             <div class="member-view-box">
                                                                 <div class="member-image">
                                                                     <img src="'.(!empty($member1_2_2_1->profile_pic) ? $member1_2_2_1->profile_pic : $image).'" alt="Member">
@@ -263,7 +266,7 @@ class MembersController extends Controller
                                                         </a>
                                                     </li>
                                                     <li>
-                                                        <a href="javascript:void(0);">
+                                                        <a href="'.(!empty($member1_2_2_2->user_id) ? url()->current()."/".$member1_2_2_2->user_id : url("/add-member") ).'">
                                                             <div class="member-view-box">
                                                                 <div class="member-image">
                                                                     <img src="'.(!empty($member1_2_2_2->profile_pic) ? $member1_2_2_2->profile_pic : $image).'" alt="Member">
@@ -279,7 +282,7 @@ class MembersController extends Controller
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="javascript:void(0);">
+                                        <a href="'.(!empty($member1_1->user_id) ? url()->current()."/".$member1_1->user_id : url("/add-member") ).'">
                                             <div class="member-view-box">
                                                 <div class="member-image">
                                                     <img src="'.(!empty($member1_1->profile_pic) ? $member1_1->profile_pic : $image ).'" alt="Member">
@@ -291,7 +294,7 @@ class MembersController extends Controller
                                         </a>
                                         <ul class="active">
                                             <li>
-                                                <a href="javascript:void(0);">
+                                                <a href="'.(!empty($member1_1_1->user_id) ? url()->current()."/".$member1_1_1->user_id : url("/add-member") ).'">
                                                     <div class="member-view-box">
                                                         <div class="member-image">
                                                             <img src="'.(!empty($member1_1_1->profile_pic) ? $member1_1_1->profile_pic : $image ).'" alt="Member">
@@ -303,7 +306,7 @@ class MembersController extends Controller
                                                 </a>
                                                 <ul class="active">
                                                     <li>
-                                                        <a href="javascript:void(0);">
+                                                        <a href="'.(!empty($member1_1_1_1->user_id) ? url()->current()."/".$member1_1_1_1->user_id : url("/add-member") ).'">
                                                             <div class="member-view-box">
                                                                 <div class="member-image">
                                                                     <img src="'.(!empty($member1_1_1_1->profile_pic) ? $member1_1_1_1->profile_pic : $image).'" alt="Member">
@@ -315,7 +318,7 @@ class MembersController extends Controller
                                                         </a>
                                                     </li>
                                                     <li>
-                                                        <a href="javascript:void(0);">
+                                                        <a href="'.(!empty($member1_1_1_2->user_id) ? url()->current()."/".$member1_1_1_2->user_id : url("/add-member") ).'">
                                                             <div class="member-view-box">
                                                                 <div class="member-image">
                                                                     <img src="'.(!empty($member1_1_1_2->profile_pic) ? $member1_1_1_2->profile_pic : $image ).'" alt="Member">
@@ -329,7 +332,7 @@ class MembersController extends Controller
                                                 </ul>
                                             </li>
                                             <li>
-                                                <a href="javascript:void(0);">
+                                                <a href="'.(!empty($member1_1_2->user_id) ? url()->current()."/".$member1_1_2->user_id : url("/add-member") ).'">
                                                     <div class="member-view-box">
                                                         <div class="member-image">
                                                             <img src="'.(!empty($member1_1_2->profile_pic) ? $member1_1_2->profile_pic : $image).'" alt="Member">
@@ -341,7 +344,7 @@ class MembersController extends Controller
                                                 </a>
                                                 <ul class="active">
                                                     <li>
-                                                        <a href="javascript:void(0);">
+                                                        <a href="'.(!empty($member1_1_2_1->user_id) ? url()->current()."/".$member1_1_2_1->user_id : url("/add-member") ).'">
                                                             <div class="member-view-box">
                                                                 <div class="member-image">
                                                                     <img src="'.(!empty($member1_1_2_1->profile_pic) ? $member1_1_2_1->profile_pic : $image).'" alt="Member">
@@ -353,7 +356,7 @@ class MembersController extends Controller
                                                         </a>
                                                     </li>
                                                     <li>
-                                                        <a href="javascript:void(0);">
+                                                        <a href="'.(!empty($member1_1_2_2->user_id) ? url()->current()."/".$member1_1_2_2->user_id : url("/add-member") ).'">
                                                             <div class="member-view-box">
                                                                 <div class="member-image">
                                                                     <img src="'.(!empty($member1_1_2_2->profile_pic) ? $member1_1_2_2->profile_pic : $image).'" alt="Member">
