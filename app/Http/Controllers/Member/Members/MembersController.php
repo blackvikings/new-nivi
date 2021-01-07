@@ -153,11 +153,13 @@ class MembersController extends Controller
         if (!empty($member1->user_id))
         {
             $member1_2 = Member::where('left_or_right', 'left')->where('sub_sponser_id', $member1->user_id)->first();
+            // dd($member1_2->toArray());
         }
 
         if(!empty($member1_2->user_id))
         {
             $member1_2_1 = Member::where('left_or_right', 'left')->where('sub_sponser_id', $member1_2->user_id)->first();
+            // dd($member1_2_1->toArray());
             $member1_2_2 = Member::where('left_or_right', 'right')->where('sub_sponser_id', $member1_2->user_id)->first();
         }
 
@@ -189,7 +191,7 @@ class MembersController extends Controller
                                 </a>
                                 <ul class="active">
                                     <li>
-                                        <a href="'.(!empty($member1_2->user_id) ? url()->current()."/".$member1_2->user_id : url("/add-member") ).'">
+                                        <a href="'.(!empty($member1_2->user_id) ? url('binary-tree')."/".$member1_2->user_id : url("/add-member") ).'">
                                             <div class="member-view-box">
                                                 <div class="member-image">
                                                     <img src="'.(!empty($member1_2->profile_pic) ? $member1_2->profile_pic : $image ).'" alt="Member">
@@ -201,7 +203,7 @@ class MembersController extends Controller
                                         </a>
                                         <ul class="active">
                                             <li>
-                                                <a href="'.(!empty($member1_2_1->user_id) ? url()->current()."/".$member1_2_1->user_id : url("/add-member") ).'">
+                                                <a href="'.(!empty($member1_2_1->user_id) ? url('binary-tree')."/".$member1_2_1->user_id : url("/add-member") ).'">
                                                     <div class="member-view-box">
                                                         <div class="member-image">
                                                             <img src="'.(!empty($member1_2_1->profile_pic) ? $member1_2_1->profile_pic : $image ).'" alt="Member">
@@ -214,7 +216,7 @@ class MembersController extends Controller
                                                 <!-- 44444444444444444---start----444444444 -->
                                                 <ul class="active">
                                                     <li>
-                                                        <a href="'.(!empty($member1_2_1_1->user_id) ? url()->current()."/".$member1_2_1_1->user_id : url("/add-member") ).'">
+                                                        <a href="'.(!empty($member1_2_1_1->user_id) ? url('binary-tree')."/".$member1_2_1_1->user_id : url("/add-member") ).'">
                                                             <div class="member-view-box">
                                                                 <div class="member-image">
                                                                     <img src="'.(!empty($member1_2_1_1->profile_pic) ? $member1_2_1_1->profile_pic : $image).'" alt="Member">
@@ -226,7 +228,7 @@ class MembersController extends Controller
                                                         </a>
                                                     </li>
                                                     <li>
-                                                        <a href="'.(!empty($member1_2_1_2->user_id) ? url()->current()."/".$member1_2_1_2->user_id : url("/add-member") ).'">
+                                                        <a href="'.(!empty($member1_2_1_2->user_id) ? url('binary-tree')."/".$member1_2_1_2->user_id : url("/add-member") ).'">
                                                             <div class="member-view-box">
                                                                 <div class="member-image">
                                                                     <img src="'.(!empty($member1_2_1_2->profile_pic) ? $member1_2_1_2->profile : $image).'" alt="Member">
@@ -241,7 +243,7 @@ class MembersController extends Controller
                                                 <!-- 44444444444444------End------444444444444444 -->
                                             </li>
                                             <li>
-                                                <a href="'.(!empty($member1_2_2->user_id) ? url()->current()."/".$member1_2_2->user_id : url("/add-member") ).'">
+                                                <a href="'.(!empty($member1_2_2->user_id) ? url('binary-tree')."/".$member1_2_2->user_id : url("/add-member") ).'">
                                                     <div class="member-view-box">
                                                         <div class="member-image">
                                                             <img src="'.(!empty($member1_2_2->profile_pic) ? $member1_2_2->profile_pic : $image).'" alt="Member">
@@ -254,7 +256,7 @@ class MembersController extends Controller
                                                 </a>
                                                 <ul class="active">
                                                     <li>
-                                                        <a href="'.(!empty($member1_2_2_1->user_id) ? url()->current()."/".$member1_2_2_1->user_id : url("/add-member") ).'">
+                                                        <a href="'.(!empty($member1_2_2_1->user_id) ? url('binary-tree')."/".$member1_2_2_1->user_id : url("/add-member") ).'">
                                                             <div class="member-view-box">
                                                                 <div class="member-image">
                                                                     <img src="'.(!empty($member1_2_2_1->profile_pic) ? $member1_2_2_1->profile_pic : $image).'" alt="Member">
@@ -266,7 +268,7 @@ class MembersController extends Controller
                                                         </a>
                                                     </li>
                                                     <li>
-                                                        <a href="'.(!empty($member1_2_2_2->user_id) ? url()->current()."/".$member1_2_2_2->user_id : url("/add-member") ).'">
+                                                        <a href="'.(!empty($member1_2_2_2->user_id) ? url('binary-tree')."/".$member1_2_2_2->user_id : url("/add-member") ).'">
                                                             <div class="member-view-box">
                                                                 <div class="member-image">
                                                                     <img src="'.(!empty($member1_2_2_2->profile_pic) ? $member1_2_2_2->profile_pic : $image).'" alt="Member">
@@ -282,7 +284,7 @@ class MembersController extends Controller
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="'.(!empty($member1_1->user_id) ? url()->current()."/".$member1_1->user_id : url("/add-member") ).'">
+                                        <a href="'.(!empty($member1_1->user_id) ? url('binary-tree')."/".$member1_1->user_id : url("/add-member") ).'">
                                             <div class="member-view-box">
                                                 <div class="member-image">
                                                     <img src="'.(!empty($member1_1->profile_pic) ? $member1_1->profile_pic : $image ).'" alt="Member">
@@ -294,7 +296,7 @@ class MembersController extends Controller
                                         </a>
                                         <ul class="active">
                                             <li>
-                                                <a href="'.(!empty($member1_1_1->user_id) ? url()->current()."/".$member1_1_1->user_id : url("/add-member") ).'">
+                                                <a href="'.(!empty($member1_1_1->user_id) ? url('binary-tree')."/".$member1_1_1->user_id : url("/add-member") ).'">
                                                     <div class="member-view-box">
                                                         <div class="member-image">
                                                             <img src="'.(!empty($member1_1_1->profile_pic) ? $member1_1_1->profile_pic : $image ).'" alt="Member">
@@ -306,7 +308,7 @@ class MembersController extends Controller
                                                 </a>
                                                 <ul class="active">
                                                     <li>
-                                                        <a href="'.(!empty($member1_1_1_1->user_id) ? url()->current()."/".$member1_1_1_1->user_id : url("/add-member") ).'">
+                                                        <a href="'.(!empty($member1_1_1_1->user_id) ? url('binary-tree')."/".$member1_1_1_1->user_id : url("/add-member") ).'">
                                                             <div class="member-view-box">
                                                                 <div class="member-image">
                                                                     <img src="'.(!empty($member1_1_1_1->profile_pic) ? $member1_1_1_1->profile_pic : $image).'" alt="Member">
@@ -318,7 +320,7 @@ class MembersController extends Controller
                                                         </a>
                                                     </li>
                                                     <li>
-                                                        <a href="'.(!empty($member1_1_1_2->user_id) ? url()->current()."/".$member1_1_1_2->user_id : url("/add-member") ).'">
+                                                        <a href="'.(!empty($member1_1_1_2->user_id) ? url('binary-tree')."/".$member1_1_1_2->user_id : url("/add-member") ).'">
                                                             <div class="member-view-box">
                                                                 <div class="member-image">
                                                                     <img src="'.(!empty($member1_1_1_2->profile_pic) ? $member1_1_1_2->profile_pic : $image ).'" alt="Member">
