@@ -17,7 +17,8 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('name', 191)->nullable();
             $table->string('slug', 191);
-            $table->string('description', 191);
+            $table->text('sortDescription');
+            $table->longText('description');
             $table->string('price', 191);
             $table->string('quantity', 191);
             $table->enum('category', ['personalCare', 'healthCare', 'beautyCare', 'argoCare', 'homeCare', 'animalCare']);
