@@ -176,4 +176,10 @@
         </section><!-- End Contact Section -->
 
     </main><!-- End #main -->
+
+    @if(\Session::has('response'))
+    <pre>
+        {!! \Session::get('response') !!}
+    </pre>
+    @endif
 @endsection
