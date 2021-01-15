@@ -11,4 +11,4 @@
 
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('member') }}'><i class='nav-icon la la-user-plus'></i> Members</a></li>
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('product') }}'><i class='nav-icon la la-industry'></i> Products</a></li>
-<li class='nav-item'><a class='nav-link' href='{{ backpack_url('productimage') }}'><i class='nav-icon la la-image'></i> ProductImages</a></li>
+{{--<li class='nav-item'><a class='nav-link' href='{{ backpack_url('productimage') }}'><i class='nav-icon la la-image'></i> ProductImages</a></li>--}}

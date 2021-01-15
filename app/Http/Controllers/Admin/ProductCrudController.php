@@ -39,6 +39,37 @@ class ProductCrudController extends CrudController
      */
     protected function setupListOperation()
     {
+        $this->crud->addColumn([
+            'name' => 'name',
+            'type' => 'text',
+            'label' => 'Name'
+        ]);
+
+        $this->crud->addColumn([
+            'name' => 'slug',
+            'type' => 'text',
+            'label' => 'slug'
+        ]);
+
+        $this->crud->addColumn([
+            'name' => 'price',
+            'type' => 'number',
+            'label' => 'Price'
+        ]);
+
+        $this->crud->addColumn([
+            'name' => 'quantity',
+            'type' => 'number',
+            'label' => 'Quantity'
+        ]);
+
+        $this->crud->addColumn([
+            'name' => 'category',
+            'label' => 'Category',
+            'type' => 'text',
+        ]);
+
+
 
 
         /**
@@ -70,8 +101,8 @@ class ProductCrudController extends CrudController
             'label' => 'slug'
         ]);
 
-        CRUD::addField([
-            'name' => ' sortDescription',
+        $this->crud->addField([
+            'name' => 'sortDescription',
             'type' => 'textarea',
             'label' => 'Sort description'
         ]);
@@ -81,6 +112,13 @@ class ProductCrudController extends CrudController
             'type' => 'textarea',
             'label' => 'Description'
         ]);
+
+        $this->crud->addField([
+            'name' => 'price',
+            'type' => 'number',
+            'label' => 'Price'
+        ]);
+
 
         $this->crud->addField([
             'name' => 'quantity',
@@ -100,6 +138,19 @@ class ProductCrudController extends CrudController
                 'animalCare' => 'Animal care'],
             'default' => 'right',
         ]);
+
+        $this->crud->addColumn([
+            'name' => 'image',
+            'label' => 'Product Image',
+            'type' => 'array',
+        ]);
+
+        $this->crud->addField([
+            'name' => 'image',
+            'label' => 'Product Image',
+            'type' => 'upload_multiple',
+            'upload' => true,
+        ], 'both');
         /**
          * Fields can be defined using the fluent syntax or array syntax:
          * - CRUD::field('price')->type('number');
