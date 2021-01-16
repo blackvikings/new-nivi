@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Member\Members\MembersController;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\Member\Members\ProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,6 +42,7 @@ Route::group(['middleware' => 'auth:members' , 'as' => 'member.'], function () {
     Route::any('/view-member', [MembersController::class, 'viewMember'])->name('view');
 //    Route::get('/view-member/table', [MembersController::class, 'viewMember'])->name('view.data');
     Route::any('/binary-tree/{user_id?}', [MembersController::class, 'binaryTree'])->name('binaryTree');
+    Route::get('/products', [ProductController::class, 'index'])->name('products');
 });
 
 

@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'Add Members')
 @section('content')
     <main id="main">
         <!-- ======= Contact Section ======= -->
