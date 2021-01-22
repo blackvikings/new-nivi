@@ -10,7 +10,7 @@
                             @csrf
                             <div class="form-row">
                                 <div class="col-md-12 form-group">
-                                    <input type="text" name="user_id" class="form-control {{ $errors->has('user_id') ? ' is-invalid' : '' }} " id="" placeholder="User Id" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                                    <input type="text" name="user_id" class="form-control {{ $errors->has('user_id') ? ' is-invalid' : '' }}" id="" placeholder="User Id" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
                                     @if($errors->has('user_id'))
                                         <div class="invalid-feedback">
                                             {{ $errors->first('user_id') }}

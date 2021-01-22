@@ -28,7 +28,7 @@ class LoginController extends DefaultLoginController
             'password' => 'required',
         ]);
 
-        if(Auth::guard('members')->attempt(['user_id' => $request->user_id, 'password' => $request->password]))
+        if(Auth::guard('members')->attempt(['user_id' => $request->school_id, 'password' => $request->password]))
         {
             return redirect()->intended('/');
         }
