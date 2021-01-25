@@ -13,7 +13,7 @@ class Product extends Model
 
     protected $fillable = ['name', 'slug', 'sortDescription', 'description', 'price', 'quantity', 'category', 'image'];
 
-    protected $casts = ['image' => 'array'];
+//    protected $casts = ['image' => 'array'];
 
     public function setSlugAttribute($value)
     {
@@ -29,7 +29,7 @@ class Product extends Model
     {
         $attribute_name = "image";
         $disk = "public";
-        $destination_path = "uploads/product-images";
+        $destination_path = "public/uploads/product-images";
 
         $this->uploadMultipleFilesToDisk($value, $attribute_name, $disk, $destination_path);
     }

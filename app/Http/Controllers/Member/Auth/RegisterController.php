@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Member;
 use Session;
+use Illuminate\Support\Facades\Hash;
 class RegisterController extends Controller
 {
 
@@ -80,7 +81,7 @@ class RegisterController extends Controller
             $member->address = json_encode($address);
             $member->bankdetails = json_encode($bank_details);
             $password = $this->randomPassword();
-            $member->password = bcrypt($password);
+            $member->password =  Hash::make($password);
             $member->save();
 
             // $details = [
@@ -121,7 +122,7 @@ class RegisterController extends Controller
 
 
             toastr()->success('Member registration successfully completed!!');
-            return redirect()->back()->with('response',$response);
+            return redirect()->back();
         }
         else
         {

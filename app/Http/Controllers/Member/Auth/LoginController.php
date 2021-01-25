@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller as DefaultLoginController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends DefaultLoginController
 {
@@ -28,7 +29,9 @@ class LoginController extends DefaultLoginController
             'password' => 'required',
         ]);
 
-        if(Auth::guard('members')->attempt(['user_id' => $request->school_id, 'password' => $request->password]))
+//        dd($request->all());
+
+        if(Auth::guard('members')->attempt(['user_id' => $request->user_id, 'password' => $request->password]))
         {
             return redirect()->intended('/');
         }
