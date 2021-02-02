@@ -43,6 +43,7 @@ Route::group(['middleware' => 'auth:members' , 'as' => 'member.'], function () {
 //    Route::get('/view-member/table', [MembersController::class, 'viewMember'])->name('view.data');
     Route::any('/binary-tree/{user_id?}', [MembersController::class, 'binaryTree'])->name('binaryTree');
     Route::get('/products', [ProductController::class, 'index'])->name('products');
+    Route::get('/product-details/{slug}', [ProductController::class, 'details'])->name('product-details');
 });
 
 

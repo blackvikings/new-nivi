@@ -150,9 +150,15 @@ class ProductCrudController extends CrudController
             'label' => 'Product Image',
             'type' => 'upload_multiple',
             'upload' => true,
-            'entity' => 'images',
-            'model' => "App\Models\ProductImage"
         ], 'both');
+
+
+        $this->crud->addField([
+           'name' => 'featuredImage',
+           'type' => 'image',
+           'label' => 'Featured Image',
+        ]);
+
         /**
          * Fields can be defined using the fluent syntax or array syntax:
          * - CRUD::field('price')->type('number');

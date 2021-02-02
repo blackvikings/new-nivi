@@ -84,45 +84,46 @@ class RegisterController extends Controller
             $member->password =  Hash::make($password);
             $member->save();
 
-            // $details = [
-            //     'title' => 'Mail from Nevi Helth Care',
-            //     'body' => 'This is for testing email using smtp',
-            //     'member_id' => $member->user_id,
-            //     'password' => $password,
-            // ];
+             $details = [
+                 'title' => 'Mail from Nevi Helth Care',
+                 'body' => 'This is for testing email using smtp',
+                 'member_id' => $member->user_id,
+                 'password' => $password,
+             ];
 
             Session::put('user_id', $member->user_id);
             Session::put('password', $password);
 
             // \Mail::to($member->email)->send(new \App\Mail\UserCredentials($details));
 
+            $message = 'Thank you for registration you user id:- '.$member->user_id.' your password: '.$password.' regards NIVI Healt care Pvt. Ltd.';
 //            $message = 'Thank you for registration you user id:- '.$member->user_id."your password: -".$password;
-//
-//            // Account details
-//            $apiKey = urlencode('DkoPm7YQXqs-e1iRKlG5fvOltZw97xOpY3xHK0WQkE');
-//
-//            // Message details
-//            $numbers = array($member->phone_no);
-//            $sender = urlencode('nhcplt');
-//            $message = rawurlencode($message);
-//
-//            $numbers = implode(',', $numbers);
-//
-//            // Prepare data for POST request
-//            $data = array('apikey' => $apiKey, 'numbers' => $numbers, "sender" => $sender, "message" => $message, 'template' => 'ID And Password');
-//
-//            // Send the POST request with cURL
-//            $ch = curl_init('https://api.textlocal.in/send/');
-//            curl_setopt($ch, CURLOPT_POST, true);
-//            curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-//            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-//            $response = curl_exec($ch);
-//            curl_close($ch);
+
+            // Account details
+            $apiKey = urlencode('DkoPm7YQXqs-e1iRKlG5fvOltZw97xOpY3xHK0WQkE');
+
+            // Message details
+            $numbers = array($member->phone_no);
+            $sender = urlencode('nhcplt');
+            $message = rawurlencode($message);
+
+            $numbers = implode(',', $numbers);
+
+            // Prepare data for POST request
+            $data = array('apikey' => $apiKey, 'numbers' => $numbers, "sender" => $sender, "message" => $message);
+
+            // Send the POST request with cURL
+            $ch = curl_init('https://api.textlocal.in/send/');
+            curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            $response = curl_exec($ch);
+            curl_close($ch);
 
 
 
             toastr()->success('Member registration successfully completed!!');
-            return redirect()->back();
+            return redirect()->back()->with(['response' => $response]);
         }
         else
         {

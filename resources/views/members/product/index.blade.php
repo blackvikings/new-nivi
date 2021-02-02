@@ -108,53 +108,15 @@
     <div class="row">
         @foreach($products as $product)
             <div class="column {!! $product->category !!} aos-init aos-animate" data-aos="fade-up">
-                <div class="content" style="cursor: pointer;">
-                    <img src="./assets/ourImages/c-d-x-PDX_a_82obo-unsplash.jpg" alt="Mountains" style="width:100%">
-                    <div class="innerCard"><h5>{{ $product->name }}</h5><h6>&#8377;45<h6></div>
-                    <!--  <p>Lorem ipsum dolor..</p> -->
-                </div>
+                <a href="{{ route('member.product-details', $product->slug) }}">
+                    <div class="content" style="cursor: pointer;">
+                        <img src="{!! $product->featuredImage !!}" alt="Mountains" style="width:100%">
+                        <div class="innerCard"><h5>{{ $product->name }}</h5><h6>&#8377;45<h6></div>
+                        <!--  <p>Lorem ipsum dolor..</p> -->
+                    </div>
+                </a>
             </div>
         @endforeach
-{{--        <div class="column healthCare">--}}
-{{--            <div class="content" style="cursor: pointer;">--}}
-{{--                <img src="/w3images/lights.jpg" alt="Lights" style="width:100%">--}}
-{{--                <div class="innerCard"><h5>health Name</h5><h6>&#8377;45<h6></div>--}}
-{{--                <!-- <p>Lorem ipsum dolor..</p> -->--}}
-{{--            </div>--}}
-{{--        </div>--}}
-
-{{--        <div class="column beautyCare">--}}
-{{--            <div class="content" style="cursor: pointer;">--}}
-{{--                <img src="/w3images/nature.jpg" alt="Nature" style="width:100%">--}}
-{{--                <div class="innerCard"><h5>beauty Name</h5><h6>&#8377;45<h6></div>--}}
-{{--                <!-- <p>Lorem ipsum dolor..</p> -->--}}
-{{--            </div>--}}
-{{--        </div>--}}
-
-{{--        <div class="column argoCare">--}}
-{{--            <div class="content" style="cursor: pointer;">--}}
-{{--                <img src="/w3images/cars1.jpg" alt="Car" style="width:100%">--}}
-{{--                <div class="innerCard"><h5>argo Name</h5><h6>&#8377;45<h6></div>--}}
-{{--                <!-- <p>Lorem ipsum dolor..</p> -->--}}
-{{--            </div>--}}
-{{--        </div>--}}
-
-{{--        <div class="column homeCare">--}}
-{{--            <div class="content" style="cursor: pointer;">--}}
-{{--                <img src="/w3images/cars1.jpg" alt="Car" style="width:100%">--}}
-{{--                <div class="innerCard"><h5>home Name</h5><h6>&#8377;45<h6></div>--}}
-{{--                <!-- <p>Lorem ipsum dolor..</p> -->--}}
-{{--            </div>--}}
-{{--        </div>--}}
-
-{{--        <div class="column animalCare">--}}
-{{--            <div class="content" style="cursor: pointer;">--}}
-{{--                <img src="/w3images/cars2.jpg" alt="Car" style="width:100%">--}}
-{{--                <div class="innerCard"><h5>animal Name</h5><h6>&#8377;45<h6></div>--}}
-{{--                <!-- <p>Lorem ipsum dolor..</p> -->--}}
-{{--            </div>--}}
-{{--        </div>--}}
-
         <!-- END GRID -->
     </div>
 
